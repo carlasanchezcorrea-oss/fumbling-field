@@ -1,0 +1,165 @@
+<section class="cta container-global" id="cta">
+  <div class="cta-container">
+    <!-- TEXTO -->
+    <div class="cta-text reveal">
+      <h2 class="text-main">Don't miss the drop.</h2>
+
+      <p class="text-description">
+        Our best offers vanish in the first 48 hours. Sign up to get notified
+        the second we go live and secure your spot at the front of the line.
+      </p>
+    </div>
+
+    <!-- FORM -->
+    <div class="cta-form reveal delay">
+      <input
+        class="text-description"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <button class="text-main">Notify me</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const elements = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  elements.forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  /* SECTION */
+  .cta {
+    background: #163a63;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: white;
+  }
+
+  /* CONTAINER */
+  .cta-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* TEXT */
+  .cta-text {
+    max-width: 520px;
+  }
+
+  .cta-text h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+  }
+
+  .cta-text p {
+    opacity: 0.85;
+    line-height: 1.6;
+  }
+
+  /* FORM */
+  .cta-form {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin-left: 50px;
+  }
+
+  .cta-form input {
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: none;
+    flex: 1;
+  }
+
+  .cta-form button {
+    min-width: 170px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    border: none;
+    background: #1e88e5;
+    color: white;
+    cursor: pointer;
+  }
+
+    .cta-form .text-main {
+      font-size: 16px !important;
+    }
+
+  /* ========================= */
+  /* ✨ ANIMACIÓN */
+  /* ========================= */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease-out;
+  }
+
+  .reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal p {
+    text-align: justify;
+  }
+
+  /* Delay para efecto más PRO */
+  .delay {
+    transition-delay: 0.15s;
+  }
+
+  /* ========================= */
+  /* 📱 MOBILE */
+  /* ========================= */
+
+  @media (max-width: 768px) {
+    .cta {
+    }
+
+    .cta-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cta-text h2 {
+      font-size: 36px;
+    }
+    .cta-text p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    /* FORM */
+    .cta-form {
+      margin-left: 0;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-form input,
+    .cta-form button {
+      width: stretch;
+    }
+    .cta-form .text-main {
+      font-size: 16px !important;
+    }
+  }
+</style>

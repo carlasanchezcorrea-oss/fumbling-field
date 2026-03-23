@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "RalewayExtraBold";
+  src: url("/fonts/Raleway-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: "RalewayRegular";
+  src: url("/fonts/Raleway-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------- */
+.text-main,
+.text-title {
+  font-family: "RalewayExtraBold";
+}
+.text-p {
+  font-family: "RalewayRegular";
+}
+.text-description {
+  font-family: "RalewayRegular";
+  font-size: 20px;
+}
+.container-global {
+  padding: 0 80px;
+}
+/* ========================= */
+/* 📱 MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .container-global {
+    padding: 0 20px;
+  }
+  .text-title {
+    font-family: "RalewayExtraBold";
+    font-size: 44px !important;
+  }
+  .text-description {
+    font-size: 16px;
+  }
+}
+
+/* ========================= */
+/* 💻 DESKTOP */
+/* ========================= */
+
+@media (min-width: 1260px) {
+  .container-global > .container {
+    max-width: 1248px;
+    margin: auto;
+  }
+}

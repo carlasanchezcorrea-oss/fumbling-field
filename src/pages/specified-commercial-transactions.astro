@@ -1,0 +1,280 @@
+---
+import Layout from "../layouts/MainLayout.astro";
+---
+
+<Layout>
+  <main class="container-global">
+    <h1 class="fade-up">Specified Commercial Transactions Act</h1>
+    <p class="fade-up delay-1">特定商取引法に基づく表記</p>
+
+    <table>
+      <thead class="fade-up delay-2">
+        <tr>
+          <th>Item</th>
+          <th>項目</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="fade-up delay-3">
+          <td data-label="Item">Seller</td>
+          <td data-label="項目">販売業者</td>
+          <td data-label="Details">Miaomada Co., Ltd.</td>
+        </tr>
+        <tr class="fade-up delay-4">
+          <td data-label="Item">Representative Director (CEO)</td>
+          <td data-label="項目">代表責任者</td>
+          <td data-label="Details">Keiichiro Honda</td>
+        </tr>
+        <tr class="fade-up delay-5">
+          <td data-label="Item">Address</td>
+          <td data-label="項目">所在地</td>
+          <td data-label="Details"
+            >82-2 Hasunumacho, Itabashi-ku, Tokyo 174-0052, Japan</td
+          >
+        </tr>
+        <tr class="fade-up delay-6">
+          <td data-label="Item">Phone Number</td>
+          <td data-label="項目">電話番号</td>
+          <td data-label="Details">03-6454-5102</td>
+        </tr>
+        <tr class="fade-up delay-7">
+          <td data-label="Item">Email Address</td>
+          <td data-label="項目">メールアドレス</td>
+          <td data-label="Details"
+            ><a href="mailto:support@miaomada.co.jp">support@miaomada.co.jp</a
+            ></td
+          >
+        </tr>
+        <tr class="fade-up delay-8">
+          <td data-label="Item">Sales Price</td>
+          <td data-label="項目">販売価格</td>
+          <td data-label="Details"
+            >$1.00 USD (VIP Reservation Fee). Newsletter subscription is free.</td
+          >
+        </tr>
+        <tr class="fade-up delay-9">
+          <td data-label="Item">Payment Methods</td>
+          <td data-label="項目">支払方法</td>
+          <td data-label="Details">Credit Card (processed via Stripe)</td>
+        </tr>
+        <tr class="fade-up delay-10">
+          <td data-label="Item">Delivery Timing</td>
+          <td data-label="項目">商品の引渡時期</td>
+          <td data-label="Details"
+            >This is a reservation. The official product launch is scheduled for
+            May 12, 2026, on Kickstarter.</td
+          >
+        </tr>
+        <tr class="fade-up delay-11">
+          <td data-label="Item">Refund &amp; Cancellations</td>
+          <td data-label="項目">返金・キャンセル</td>
+          <td data-label="Details"
+            >The VIP reservation fee is non-refundable. Please refer to our <a
+              href="refund-policy.html">Refund Policy</a
+            > for details.</td
+          >
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</Layout>
+
+<style>
+  /* =========================
+   BASE
+========================= */
+  main {
+    padding: 100px 20px 70px;
+    max-width: 900px;
+    margin: 0 auto;
+
+    font-family: "RalewayRegular";
+    line-height: 1.6;
+    color: #333;
+  }
+
+  h1 {
+    font-size: clamp(26px, 5vw, 36px);
+    margin-bottom: 10px;
+    font-family: "RalewayExtraBold";
+  }
+
+  p {
+    font-size: clamp(14px, 2.5vw, 16px);
+    margin-bottom: 20px;
+  }
+
+  /* =========================
+   TABLE DESKTOP
+========================= */
+  .table-wrapper {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    font-size: 14px;
+  }
+
+  th {
+    background: #f7f7f7;
+    font-family: "RalewayExtraBold";
+    font-size: 13px;
+  }
+
+  /* =========================
+   MOBILE → CARDS
+========================= */
+  @media (max-width: 640px) {
+    /* ocultamos header */
+    thead {
+      display: none;
+    }
+
+    table {
+      display: block;
+    }
+
+    tbody {
+      display: block;
+    }
+
+    tr {
+      display: block;
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    td {
+      display: block;
+      border: none;
+      padding: 6px 0;
+      font-size: 14px;
+    }
+
+    /* 👇 labels dinámicos */
+    td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      color: #888;
+      margin-bottom: 2px;
+    }
+
+    /* spacing visual */
+    td + td {
+      margin-top: 8px;
+    }
+  }
+
+  /* LINKS */
+  a {
+    color: #2ab8ff;
+    text-decoration: underline;
+  }
+
+  /* =========================
+   ANIMACIÓN BASE
+========================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  filter: blur(6px);
+
+  transition: 
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+  /* delays progresivos */
+  .delay-1 {
+    transition-delay: 0.1s;
+  }
+  .delay-2 {
+    transition-delay: 0.2s;
+  }
+  .delay-3 {
+    transition-delay: 0.3s;
+  }
+  .delay-4 {
+    transition-delay: 0.4s;
+  }
+  .delay-5 {
+    transition-delay: 0.5s;
+  }
+  .delay-6 {
+    transition-delay: 0.6s;
+  }
+  .delay-7 {
+    transition-delay: 0.7s;
+  }
+  .delay-8 {
+    transition-delay: 0.8s;
+  }
+  .delay-9 {
+    transition-delay: 0.9s;
+  }
+  .delay-10 {
+    transition-delay: 1.0s;
+  }
+  .delay-11 {
+    transition-delay: 1.2s;
+  }
+
+  /* MOBILE: animación más rápida (mejor UX) */
+  @media (max-width: 640px) {
+    .fade-up {
+      transform: translateY(20px);
+      transition-duration: 0.5s;
+    }
+  }
+
+  .fade-up.show {
+    filter: blur(0);
+  }
+
+  .fade-up {
+    filter: blur(6px);
+  }
+</style>
+<script>
+  const elements = document.querySelectorAll(".fade-up");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target); // 👈 evita reanimar
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -50px 0px", // 👈 activa antes (más smooth)
+    },
+  );
+
+  elements.forEach((el) => observer.observe(el));
+</script>

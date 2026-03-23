@@ -1,0 +1,187 @@
+---
+import Layout from "../layouts/MainLayout.astro";
+---
+
+<Layout>
+  <main class="container-global">
+    <h1 class="fade-up">Privacy Policy</h1>
+    <p class="fade-up">Last updated: March 10, 2026</p>
+
+    <p class="fade-up">
+      Miaomada Co., Ltd. ("the Company") recognizes the importance of protecting
+      your personal information and complies with applicable laws and
+      regulations. This Privacy Policy describes how we collect, use, and share
+      your personal information in connection with the DP-M2 Pre-launch
+      campaign.
+    </p>
+
+    <h2 class="fade-up">Information We Collect</h2>
+    <ul class="fade-up">
+      <li class="fade-up">
+        <strong>Contact Information:</strong> We collect your email address when you
+        subscribe to our newsletter or register for a VIP reservation.
+      </li>
+      <li class="fade-up">
+        <strong>Payment Information:</strong> For VIP reservations, we track the transaction
+        status and amount. We do not collect or store credit card numbers; these are
+        processed securely by Stripe.
+      </li>
+    </ul>
+
+    <h2 class="fade-up">How We Use Your Personal Information</h2>
+    <ul class="fade-up">
+      <li class="fade-up">
+        To manage your subscription to our newsletter and provide project
+        updates.
+      </li>
+      <li class="fade-up">
+        To verify and manage your VIP priority status for the Kickstarter
+        campaign.
+      </li>
+      <li class="fade-up">
+        For marketing communications and promotional updates regarding the DP-M2
+        launch.
+      </li>
+      <li class="fade-up">To comply with applicable laws and prevent fraud.</li>
+    </ul>
+
+    <h2 class="fade-up">Disclosure of Information to Third Parties</h2>
+    <p class="fade-up">
+      We share your information with the following service providers to
+      facilitate this campaign:
+    </p>
+    <ul class="fade-up">
+      <li class="fade-up">
+        <strong>Google Firebase:</strong> For secure database management and infrastructure.
+      </li>
+      <li class="fade-up">
+        <strong>MailerLite:</strong> For email marketing automation and newsletter
+        delivery.
+      </li>
+      <li class="fade-up">
+        <strong>Stripe:</strong> For secure payment processing of VIP reservations.
+      </li>
+    </ul>
+    <p class="fade-up">
+      We may also use anonymized data for analytical purposes to improve our
+      campaign performance.
+    </p>
+
+    <h2 class="fade-up">Contact</h2>
+    <p class="fade-up">
+      Should you have any questions about our privacy practices, please contact
+      us at <a href="mailto:support@miaomada.co.jp">support@miaomada.co.jp</a>.
+    </p>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 100px 20px 70px;
+    max-width: 900px;
+    margin: 0 auto;
+
+    font-family: "RalewayRegular";
+    line-height: 1.6;
+    color: #333;
+  }
+
+  /* TITULOS */
+  h1 {
+    font-family: "RalewayExtraBold";
+    font-size: clamp(28px, 5vw, 40px);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: "RalewayExtraBold";
+    font-size: clamp(20px, 3.5vw, 26px);
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+
+  /* TEXTO */
+  p {
+    font-size: clamp(14px, 2.5vw, 16px);
+    margin-bottom: 16px;
+  }
+
+  /* LISTAS */
+  ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  li {
+    margin-bottom: 10px;
+    font-size: clamp(14px, 2.5vw, 16px);
+  }
+
+  /* LINKS */
+  a {
+    color: #2ab8ff;
+    text-decoration: underline;
+  }
+
+  /* 📱 MOBILE FINO */
+  @media (max-width: 480px) {
+    main {
+      padding: 90px 16px 60px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+  }
+
+  /* Estado inicial */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+
+  /* Cuando aparece */
+  .fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-up.show {
+    filter: blur(0);
+  }
+
+  .fade-up {
+    filter: blur(6px);
+  }
+
+  @media (max-width: 640px) {
+    h2 {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+    }
+
+    p {
+      padding-left: 2px;
+    }
+  }
+</style>
+<script>
+  const elements = document.querySelectorAll(".fade-up");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    },
+  );
+
+  elements.forEach((el) => observer.observe(el));
+</script>

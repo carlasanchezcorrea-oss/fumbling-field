@@ -1,11 +1,46 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+// import Welcome from '../components/Welcome.astro';
+import Layout from "../layouts/Layout.astro";
+
+import Navbar from "../components/ui/Navbar.vue";
+
+import FormTest from "../features/hero/HeroSection.astro";
+import HeroSection from "../features/hero/HeroBanner.vue";
+import ProductIntro from "../features/product-intro/ProductIntro.astro";
+import FeatureGrid from "../features/feature-showcase/FeatureGrid.astro";
+import AccordionShowcase from "../features/accordion-showcase/AccordationShowcase.vue";
+import ProductHotspots from "../features/product-hotspots/ProductHotspots.vue";
+import PricingOffer from "../features/pricing-offer/PricingOffer.astro";
+import Testimonials from "../features/testimonials/Testimonials.vue";
+import FinalCTA from "../features/final-cta/FinalCTA.astro";
+
+import FooterSection from "../features/shared/components/FooterSection.astro";
+import FooterLinks from "../features/shared/components/FooterLinks.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <Navbar client:load />
+  <!-- <Welcome /> -->
+  <!-- Form -->
+  <HeroSection />
+
+  <ProductIntro />
+
+  <!-- <FeatureGrid /> -->
+  <FinalCTA />
+
+  <!-- Accordation ShowCase interactivos -->
+  <AccordionShowcase client:load />
+
+  <PricingOffer />
+  <ProductHotspots client:visible />
+
+  <Testimonials client:load />
+  <FooterSection />
+  <FooterLinks />
 </Layout>
+
+
