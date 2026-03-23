@@ -88,18 +88,20 @@ nav {
   position: fixed;
   z-index: 1000;
   top: 0;
-  width: stretch;
+  left: 0;
+  width: 100%;   
   transition: background 0.3s;
 }
 .navbar {
   display: flex;
   justify-content: space-between;
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 /* GRADIENT AL SCROLL */
 nav.scrolled {
-  background: linear-gradient(to bottom, black, transparent);
+  background: #000;
 }
 
 /* HAMBURGER */

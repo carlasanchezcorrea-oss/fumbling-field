@@ -9,20 +9,40 @@
       </h1>
 
       <p class="subtitle text-description">
-        <strong class="text-main">Fast. Clean. Consistent.</strong> Precision in one smooth
-        motion.
+        <strong class="text-main">Fast. Clean. Consistent.</strong> Precision in
+        one smooth motion.
       </p>
 
       <div class="form">
-        <input type="email" placeholder="Enter your email" class="text-description">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          class="text-description"
+        />
         <div class="buttons">
           <button class="primary text-main">Notify me</button>
 
           <button class="secondary text-main">
             <a
-              href="https://youtu.be/Mc2qe9--yA4" target="_blank" rel="noopener noreferrer"
+              href="https://youtu.be/Mc2qe9--yA4"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              ▶ Watch demo
+            <div class="icon">
+              <svg
+                width="13"
+                height="16"
+                viewBox="0 0 13 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.50896 15.994C1.3709 15.9812 1.20803 16.0125 1.07321 15.994C0.458406 15.9092 0.021572 15.2032 0 14.5727V1.45389C0.0852096 0.216094 1.17352 -0.369132 2.16691 0.247445C5.59795 2.39211 9.0937 4.43111 12.4945 6.62338C13.2798 7.37117 13.1072 8.44989 12.2734 9.04208L2.15613 15.7071L1.50896 15.9951V15.994ZM1.30619 14.5889L11.6964 7.73345C11.6964 7.69862 11.4159 7.5256 11.3685 7.49425C8.14992 5.3821 4.75664 3.5614 1.52946 1.4655L1.36659 1.39003L1.30619 1.42486V14.5901V14.5889Z"
+                  fill="black"
+                />
+              </svg>
+            </div>
+              Watch demo
             </a>
           </button>
         </div>
@@ -70,7 +90,7 @@ h1 {
 
 /* FORM */
 .form input {
-  width: stretch;
+  width: 100%;
   padding: 14px 16px;
   border-radius: 10px;
   border: none;
@@ -84,7 +104,6 @@ h1 {
   justify-content: space-between;
   gap: 10px;
   font-family: "RalewayExtraBold";
-
 }
 
 button.primary,
@@ -119,6 +138,10 @@ a {
   padding: 0;
   border: none;
   background: transparent;
+}
+
+.secondary .icon {
+  margin-right: 10px;
 }
 
 /* ========================= */
