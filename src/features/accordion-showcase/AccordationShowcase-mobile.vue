@@ -311,14 +311,14 @@ onMounted(() => {
   }
 }
 .accordation-showCase-mobile .slide-swiper-01 {
-  background-image: url(/public/assets/accordionShowCase/slide-1-bg.jpg);
+  background-image: url("/assets/accordionShowCase/slide-1-bg.jpg");
   background-size: cover;
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 250%;
 }
 .accordation-showCase-mobile .slide-swiper-02 {
-  background-image: url(/public/assets/accordionShowCase/slide-2-bg.jpg);
+  background-image: url("/assets/accordionShowCase/slide-2-bg.jpg");
   background-size: cover;
   background-position: center;
   background-position-x: 28%;
@@ -326,7 +326,7 @@ onMounted(() => {
   background-size: 220%;
 }
 .accordation-showCase-mobile .slide-swiper-03 {
-  background-image: url(/public/assets/accordionShowCase/slide-3-bg.jpg);
+  background-image: url("/assets/accordionShowCase/slide-3-bg.jpg");
   background-size: cover;
   background-position: bottom center;
   background-repeat: no-repeat;

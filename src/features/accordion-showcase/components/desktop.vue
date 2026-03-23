@@ -4,7 +4,7 @@
       <div
         class="option2 active"
         style="
-          --optionBackground: url(/public/assets/accordionShowCase/slide-1-bg.jpg);
+          --optionBackground: url('/assets/accordionShowCase/slide-1-bg.jpg');
         "
       >
         <div class="shadow"></div>
@@ -20,7 +20,7 @@
       <div
         class="option2"
         style="
-          --optionBackground: url(/public/assets/accordionShowCase/slide-2-bg.jpg);
+          --optionBackground: url('/assets/accordionShowCase/slide-2-bg.jpg');
         "
       >
         <div class="shadow"></div>
@@ -37,7 +37,7 @@
       <div
         class="option2"
         style="
-          --optionBackground: url(/public/assets/accordionShowCase/slide-3-bg.jpg);
+          --optionBackground: url('/assets/accordionShowCase/slide-3-bg.jpg');
         "
       >
         <div class="shadow"></div>
