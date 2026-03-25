@@ -211,6 +211,17 @@ li {
   .overlay {
     justify-content: flex-end;
   }
+  .menu-right {
+    max-width: 40rem;
+  }
+  .overlay .close {
+    font-size: 4rem;
+    font-weight: bold;
+    right: 5rem;
+  }
+  .menu-right ul {
+    margin-top : 5rem;
+  }
 }
 
 @media (min-width: 1260px) {
