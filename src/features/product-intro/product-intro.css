@@ -1,1 +1,127 @@
+/* ========================= */
+/* DEFAULT */
+/* 💻 DESKTOP (1024+) */
+/* ========================= */
+/* SECTION */
+.feature {
+  background: #fff;
+  padding-top: 6rem;
+  padding-bottom: 80px;
+}
 
+/* ROW */
+.feature .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.9rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.feature .row:nth-child(2) {
+  margin-bottom: 0px;
+}
+
+.feature .row .image {
+  width: 50%;
+}
+
+.feature .row .text {
+  width: 45%;
+}
+
+/* ANIMACIÓN */
+.feature .row.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* REVERSE */
+.feature .reverse {
+  flex-direction: row-reverse;
+}
+
+/* IMAGE */
+.feature .image div {
+  max-width: 100%;
+  height: 38.5rem;
+  max-height: 100%;
+  border-radius: 4rem;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.feature .image > .image-1 {
+  background-image: url("/assets/productIntro/product-1.jpg");
+  background-size: 110%;
+}
+.feature .image > .image-2 {
+  background-image: url("/assets/productIntro/product-2.jpg");
+  background-position-y: -4.5rem;
+}
+
+/* TEXT */
+.feature .text {
+  color: #000;
+}
+.feature .text h3 {
+  font-size: 2.55rem;
+  margin-bottom: 2.4rem;
+}
+.feature .text-h3.sub {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.feature .text-description {
+  font-size: 1.14rem;
+  line-height: 1.5;
+}
+
+/* ========================= */
+/* 💻 DESKTOP GRANDE (1440+) */
+/* ========================= */
+
+@media (min-width: 1440px) {
+  .feature .row .image {
+    width: 50%;
+  }
+  .feature .row .text {
+    width: 50%;
+  }
+  .feature {
+    padding-top: 8rem;
+  }
+  /* IMAGE */
+  .feature .image div {
+    height: 54rem;
+  }
+  .feature .row {
+    justify-content: unset;
+    align-items: center;
+    gap: 5.9rem;
+  }
+
+  /* TEXT */
+  .feature .text h3 {
+    font-size: 3.6rem;
+    margin-bottom: 2.4rem;
+  }
+  .feature .text-h3.sub {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .feature .text-description {
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  /* IMAGE */
+  .feature .image div {
+    border-radius: 5rem;
+  }
+  .feature .image > .image-2 {
+    background-position-y: -3.5rem;
+  }
+}

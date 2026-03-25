@@ -1,0 +1,101 @@
+---
+import "./final-cta.css";
+---
+
+<section class="cta container-global" id="cta">
+  <div class="cta-container">
+    <!-- TEXTO -->
+    <div class="cta-text reveal">
+      <h3 class="text-h3">Ready to upgrade your routine?</h3>
+
+      <p class="text-description">
+        Be the first to know when DP-M2 goes live and secure your spot in line
+        for Super Early Bird access.
+      </p>
+    </div>
+
+    <!-- FORM -->
+    <div class="cta-form reveal delay">
+      <input
+        class="text-description"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <button class="text-main">Notify me</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const elements = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  elements.forEach((el) => observer.observe(el));
+</script>
+
+<style scoped>
+  .cta {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("/assets/cta/bg-cta-2.png");
+
+    background-size: 115%;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+  /* ========================= */
+  /* 📱 MOBILE */
+  /* ========================= */
+
+  @media (max-width: 768px) {
+  .cta {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("/assets/cta/bg-cta-2.png");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+    .cta-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .cta-container .cta-text,
+    .cta-container .cta-form {
+      width: 100%;
+    }
+    .cta-text h3 {
+      font-size: 36px;
+    }
+    .cta-text p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    /* FORM */
+    .cta-form {
+      margin-left: 0;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-form input,
+    .cta-form button {
+      width: stretch;
+    }
+    .cta-form .text-main {
+      font-size: 16px !important;
+    }
+  }
+</style>

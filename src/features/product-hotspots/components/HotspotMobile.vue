@@ -1,43 +1,53 @@
 <template>
-  <div
-    v-for="(hotspot, index) in hotspots"
-    :key="index"
-    class="hotspot-mobile-card"
-    :class="{ active: hotspot.isOpen }"
-    :style="{
-      top: hotspot.position.top,
-      left: hotspot.position.left,
-    }"
-  >
-    <!-- BOTÓN -->
-    <button
-      class="hotspot-mobile-button"
-      :class="{
-        active: hotspot.isOpen,
-        clicked: hotspot.hasBeenClicked,
-      }"
-      @click="toggleHotspotMobile(index)"
-    >
-      <span>{{ !hotspot.isOpen ? "+" : "−" }}</span>
-    </button>
-
-    <!-- LINEA -->
-    <div class="hotspot-mobile-line" :style="hotspot.lineStyle"></div>
-
-    <!-- TEXTO -->
-    <div
-      class="hotspot-mobile-content"
-      :class="hotspot.contentOffset.align"
+  <section>
+    <div class="product-image-container">
+      <!-- Imagen del producto -->
+      <img
+        src="/assets/dp-m2-product.png"
+        alt="DP-M2 Protein Dispenser"
+        class="product-image text-p"
+      />
+      <div
+        v-for="(hotspot, index) in hotspots"
+        :key="index"
+        class="hotspot-mobile-card"
+        :class="{ active: hotspot.isOpen }"
         :style="{
+          top: hotspot.position.top,
+          left: hotspot.position.left,
+        }"
+      >
+        <!-- BOTÓN -->
+        <button
+          class="hotspot-mobile-button"
+          :class="{
+            active: hotspot.isOpen,
+            clicked: hotspot.hasBeenClicked,
+          }"
+          @click="toggleHotspotMobile(index)"
+        >
+          <span>{{ !hotspot.isOpen ? "+" : "−" }}</span>
+        </button>
+
+        <!-- LINEA -->
+        <div class="hotspot-mobile-line" :style="hotspot.lineStyle"></div>
+
+        <!-- TEXTO -->
+        <div
+          class="hotspot-mobile-content"
+          :class="hotspot.contentOffset.align"
+          :style="{
             top: hotspot.contentOffset.top,
             left: hotspot.contentOffset.left,
-        }"
-    >
-      <h2>{{ hotspot.title }}</h2>
-      <h3>{{ hotspot.subtitle }}</h3>
-      <p>{{ hotspot.description }}</p>
+          }"
+        >
+          <h2>{{ hotspot.title }}</h2>
+          <h3>{{ hotspot.subtitle }}</h3>
+          <p>{{ hotspot.description }}</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -48,8 +58,8 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    isOpen: false,
-    position: { top: "28%", left: "63%" }, // Arriba derecha - contenedor transparente
+    isOpen: true,
+    position: { top: "55%", left: "63%" }, // Arriba derecha - contenedor transparente
     title: "Hopper",
     subtitle: "High-Capacity Storage. ",
     description:
@@ -72,7 +82,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "42%", left: "35%" }, // Abajo izquierda - contenedor transparente
+    position: { top: "63%", left: "35%" }, // Abajo izquierda - contenedor transparente
     title: "Agitator",
     subtitle: "Smooth Flow System.",
     description: "No clumps. No sticking. Just a clean, uninterrupted flow.",
@@ -95,7 +105,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "56%", left: "42%" }, // Centro izquierda - base negra
+    position: { top: "70%", left: "42%" }, // Centro izquierda - base negra
     title: "Nozzles",
     subtitle: "Controlled Pour.",
     description:
@@ -127,7 +137,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "52%", left: "60%" }, // Centro derecha - base negra
+    position: { top: "67%", left: "60%" }, // Centro derecha - base negra
     title: "Measuring Unit",
     subtitle: "Precision Core.",
     description:
@@ -146,12 +156,11 @@ const hotspots = ref([
     },
 
     contentOffset: { top: "160px", left: "20px" },
-
   },
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "67%", left: "50%" }, // Abajo centro - base negra
+    position: { top: "77%", left: "50%" }, // Abajo centro - base negra
     boxText: { class: "" },
     line: { class: "" },
     title: "Heavy-Duty Stand",
@@ -171,7 +180,6 @@ const hotspots = ref([
     },
 
     contentOffset: { top: "100px", left: "20px" },
-
   },
 ]);
 
@@ -197,6 +205,13 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 /* Hotspot Buttons */
 .hotspot-mobile-button {
   position: absolute;

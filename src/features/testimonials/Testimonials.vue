@@ -7,102 +7,152 @@
         ref="headerRef"
         :class="{ visible: isVisible.header }"
       >
-        <h2 class="main-title">Validated by real routines.</h2>
-        <p class="subtitle">
+        <h2 class="main-title text-h3">Validated by real routines.</h2>
+        <p class="subtitle text-p">
           Already trusted in Japan. <strong>Now coming to the U.S.</strong>
         </p>
       </div>
 
       <!-- Swiper Carousel -->
-      <div
-        class="swiper-container"
-        ref="swiperRef"
-        :class="{ visible: isVisible.swiper }"
-      >
-        <Swiper
-          :modules="modules"
-          :slides-per-view="1.05"
-          :space-between="0"
-          :loop="true"
-          :autoplay="{
-            delay: 4000,
-            disableOnInteraction: false,
-          }"
-          :pagination="{ clickable: true }"
-          :breakpoints="{
-            0: {
-              slidesPerView: 1.15,
-              spaceBetween: 0,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-          }"
-          @swiper="
-            (swiper) => {
-              swiper.params.pagination.el = paginationRef.value;
-              swiper.pagination.init();
-              swiper.pagination.update();
-            }
-          "
+      <div class="carousel-info">
+        <div
+          class="swiper-container"
+          ref="swiperRef"
+          :class="{ visible: isVisible.swiper }"
         >
-          <!-- Card 1 -->
-          <SwiperSlide>
-            <div class="testimonial-card">
-              <div class="quote-icon">
-                <svg width="42" height="33" viewBox="0 0 42 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.9759 -6.10352e-05L12.1599 15.6159H17.2799V32.8959H-5.24521e-05V15.3599L4.60795 -6.10352e-05H14.9759ZM39.04 -6.10352e-05L36.2239 15.6159H41.3439V32.8959H24.0639V15.3599L28.6719 -6.10352e-05H39.04Z" fill="#2AB8FF"/>
-                </svg>
+          <Swiper
+            :modules="modules"
+            :slides-per-view="1.05"
+            :space-between="0"
+            :loop="true"
+            :autoplay="{
+              delay: 4000,
+              disableOnInteraction: false,
+            }"
+            :pagination="{ clickable: true }"
+            :breakpoints="{
+              0: {
+                slidesPerView: 1.15,
+                spaceBetween: 0,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }"
+            @swiper="
+              (swiper) => {
+                swiper.params.pagination.el = paginationRef.value;
+                swiper.pagination.init();
+                swiper.pagination.update();
+              }
+            "
+          >
+            <!-- Card 1 -->
+            <SwiperSlide>
+              <div class="testimonial-card">
+                <div class="quote-icon">
+                  <svg
+                    width="42"
+                    height="33"
+                    viewBox="0 0 42 33"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.9759 -6.10352e-05L12.1599 15.6159H17.2799V32.8959H-5.24521e-05V15.3599L4.60795 -6.10352e-05H14.9759ZM39.04 -6.10352e-05L36.2239 15.6159H41.3439V32.8959H24.0639V15.3599L28.6719 -6.10352e-05H39.04Z"
+                      fill="#2AB8FF"
+                    />
+                  </svg>
+                </div>
+                <p class="testimonial-text text-p">
+                  I can really feel the effort that went into developing this
+                  (...) It's reassuring to see how much research was done. I
+                  can't wait for it to arrive!
+                </p>
+                <div class="info-name">
+                  <img
+                    src="/assets/testimonials/1.png"
+                    alt=""
+                    class="image-info-name"
+                  />
+                  <span class="author-name text-h3">nimonjiya</span>
+                </div>
               </div>
-              <p class="testimonial-text">
-                I can really feel the effort that went into developing this
-                (...) It's reassuring to see how much research was done. I can't
-                wait for it to arrive!
-              </p>
-              <span class="author-name">nimonjiya</span>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
 
-          <!-- Card 2 -->
-          <SwiperSlide>
-            <div class="testimonial-card">
-              <div class="quote-icon">
-                <svg width="42" height="33" viewBox="0 0 42 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.9759 -6.10352e-05L12.1599 15.6159H17.2799V32.8959H-5.24521e-05V15.3599L4.60795 -6.10352e-05H14.9759ZM39.04 -6.10352e-05L36.2239 15.6159H41.3439V32.8959H24.0639V15.3599L28.6719 -6.10352e-05H39.04Z" fill="#2AB8FF"/>
-                </svg>
+            <!-- Card 2 -->
+            <SwiperSlide>
+              <div class="testimonial-card">
+                <div class="quote-icon">
+                  <svg
+                    width="42"
+                    height="33"
+                    viewBox="0 0 42 33"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.9759 -6.10352e-05L12.1599 15.6159H17.2799V32.8959H-5.24521e-05V15.3599L4.60795 -6.10352e-05H14.9759ZM39.04 -6.10352e-05L36.2239 15.6159H41.3439V32.8959H24.0639V15.3599L28.6719 -6.10352e-05H39.04Z"
+                      fill="#2AB8FF"
+                    />
+                  </svg>
+                </div>
+                <p class="testimonial-text text-p">
+                  Thank you for creating such a great product. I can't wait to
+                  make shakes without the usual stress. Rooting for you guys!
+                </p>
+                <div class="info-name">
+                  <img
+                    src="/assets/testimonials/2.png"
+                    alt=""
+                    class="image-info-name"
+                  />
+                  <span class="author-name text-h3">No-name</span>
+                </div>
               </div>
-              <p class="testimonial-text">
-                Thank you for creating such a great product. I can't wait to
-                make shakes without the usual stress. Rooting for you guys!
-              </p>
-              <span class="author-name">No-name</span>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
 
-          <!-- Card 3 -->
-          <SwiperSlide>
-            <div class="testimonial-card">
-              <div class="quote-icon">
-                <svg width="42" height="33" viewBox="0 0 42 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.9759 -6.10352e-05L12.1599 15.6159H17.2799V32.8959H-5.24521e-05V15.3599L4.60795 -6.10352e-05H14.9759ZM39.04 -6.10352e-05L36.2239 15.6159H41.3439V32.8959H24.0639V15.3599L28.6719 -6.10352e-05H39.04Z" fill="#2AB8FF"/>
-                </svg>
+            <!-- Card 3 -->
+            <SwiperSlide>
+              <div class="testimonial-card">
+                <div class="quote-icon">
+                  <svg
+                    width="42"
+                    height="33"
+                    viewBox="0 0 42 33"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.9759 -6.10352e-05L12.1599 15.6159H17.2799V32.8959H-5.24521e-05V15.3599L4.60795 -6.10352e-05H14.9759ZM39.04 -6.10352e-05L36.2239 15.6159H41.3439V32.8959H24.0639V15.3599L28.6719 -6.10352e-05H39.04Z"
+                      fill="#2AB8FF"
+                    />
+                  </svg>
+                </div>
+                <p class="testimonial-text text-p">
+                  I always hated how protein powder would spill everywhere.
+                  Can't wait for it to arrive!
+                </p>
+                <div class="info-name">
+                  <img
+                    src="/assets/testimonials/3.png"
+                    alt=""
+                    class="image-info-name"
+                  />
+                  <span class="author-name text-h3">j-wada</span>
+                </div>
               </div>
-              <p class="testimonial-text">
-                I always hated how protein powder would spill everywhere. Can't
-                wait for it to arrive!
-              </p>
-              <span class="author-name">j-wada</span>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+            </SwiperSlide>
+          </Swiper>
 
-        <!-- Pagination Dots -->
-        <div ref="paginationRef" class="swiper-pagination"></div>
+          <!-- Pagination Dots -->
+          <div ref="paginationRef" class="swiper-pagination"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -167,29 +217,36 @@ onMounted(() => {
 :root {
   --bg-color: #f8fafc;
   --text-main: #111827;
-  --text-sub: #4b5563;
   --accent-blue: #2eaaff;
   --card-bg: #ffffff;
   --font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
-
-.testimonials-section {
-  height: auto;
-  background-color: #f8fafc;
-  padding: 5rem 0rem 0 1.5rem;
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  overflow: hidden;
+.testimonials-section h1,
+.testimonials-section h2,
+.testimonials-section h3,
+.testimonials-section span,
+.testimonials-section p {
+  margin: 0;
 }
-
+.testimonials-section {
+  background-color: #f6fcff;
+  overflow: hidden;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+.testimonials-section .header-content {
+  padding: 0 0rem 0 1.5rem;
+}
+.testimonials-section .carousel-info {
+  height: 40rem;
+}
+.testimonials-section .carousel-info .swiper-container {
+  height: 100%;
+}
 .testimonials-section .container {
-  max-width: 1440px;
-  margin: 0 auto;
+  /* max-width: 1440px; */
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 /* --- Header Styles --- */
@@ -218,7 +275,6 @@ onMounted(() => {
 .testimonials-section .subtitle {
   font-size: 1.125rem;
   color: #4b5563;
-  font-weight: 400;
 }
 
 .testimonials-section .subtitle strong {
@@ -232,6 +288,9 @@ onMounted(() => {
   transform: translateY(30px);
   transition: all 0.8s ease-out 0.2s;
   height: auto;
+  padding: 0 2rem;
+  max-width: 1248px;
+  margin: auto auto;
 }
 
 .testimonials-section .swiper {
@@ -249,11 +308,22 @@ onMounted(() => {
 }
 
 .testimonials-section .swiper-slide {
-  height: auto;
+  height: 25rem;
   display: flex;
   justify-content: center;
 }
 
+.testimonials-section .image-info-name {
+  width: 44px;
+  height: 44px;
+}
+
+.testimonials-section .info-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 .testimonials-section .testimonial-card {
   background: #ffffff;
   border-radius: 24px;
@@ -280,17 +350,16 @@ onMounted(() => {
 }
 
 .testimonials-section .testimonial-text {
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 1.6;
-  color: #4b5563;
+  color: #000;
   font-weight: 400;
 }
 
 .testimonials-section .author-name {
-  font-size: 0.9rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #2eaaff;
-  text-transform: lowercase;
+  color: #2d83c0;
   letter-spacing: 0.02em;
 }
 
@@ -311,10 +380,6 @@ onMounted(() => {
 
 /* --- Responsive: Desktop (1440px) --- */
 @media (min-width: 1024px) {
-  .testimonials-section {
-    padding: 8rem 2rem;
-  }
-
   .testimonials-section .header-content {
     margin-bottom: 5rem;
     max-width: 800px;
@@ -336,20 +401,19 @@ onMounted(() => {
   }
 
   .testimonials-section .testimonial-text {
-    font-size: 1.125rem;
+    font-size: 1.6rem;
   }
 }
 
 /* --- Responsive: Mobile (390px) --- */
 @media (max-width: 480px) {
-
   .testimonials-section .main-title {
     font-size: 2rem;
   }
 
   .testimonials-section .testimonial-card {
     padding: 2rem 1.5rem;
-    border-radius: 20px;
+    border-radius: 3rem;
     width: 100%;
     margin: 0 auto;
   }
@@ -360,6 +424,15 @@ onMounted(() => {
 }
 /* --- Responsive: Mobile (768px) --- */
 @media (max-width: 768px) {
+  .testimonials-section .header-content h2 {
+    font-size: 3.6rem;
+    text-align: left;
+  }
+  .testimonials-section .subtitle.text-p {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
   .testimonials-section {
     height: 90vh;
   }
@@ -372,7 +445,15 @@ onMounted(() => {
   }
 
   .testimonials-section .testimonial-card {
-    height: 80%;
+    height: 100%;
   }
+}
+
+:deep(.accordation-swiper-container .swiper-pagination-bullet) {
+  background: #e5e7eb;
+  opacity: 1;
+  width: 25px;
+  height: 25px;
+  transition: all 0.3s ease;
 }
 </style>

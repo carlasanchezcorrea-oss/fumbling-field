@@ -1,1 +1,273 @@
+/* ========================= */
+/*  DEFAULT(1024+) */
+/* 🖥️ DESKTOP */
+/* ========================= */
 
+/* Reset & Variables */
+:root {
+  --color-bg: #1a1a1a;
+  --color-text-main: #ffffff;
+  --color-text-sub: #cccccc;
+  --color-card-bg: #ffffff;
+  --color-text-card: #111111;
+  --color-primary: #007aff; /* Azul similar a la imagen */
+  --color-primary-hover: #0056b3;
+}
+
+.promo-section {
+  position: relative;
+    /* width: 100%; */
+  background-image: url("/assets/pricingOffer/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.promo-section_container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Header Content */
+.promo-section .header-content {
+  text-align: left;
+  color: var(--color-text-main);
+}
+
+.promo-section .header-content,
+.header-conten .card {
+  width: 50%;
+  min-width: 50%;
+}
+
+.header-content .main-title {
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.promo-section li:nth-child(3) {
+  margin-bottom: 0;
+}
+
+.promo-section .text-description {
+  font-size: 24px;
+  line-height: 1.5;
+  max-width: 400px;
+}
+.promo-section .header-content .subtitle {
+  max-width: 34rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+.header-content .main-title,
+.header-content .main-title span,
+.header-content .main-title strong {
+  font-size: 4.8rem;
+}
+
+/* Card Styles */
+.card {
+  background: var(--color-card-bg);
+  border-radius: 24px;
+  padding: 2.5rem 5.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.price-tag {
+  font-size: 5rem;
+  font-weight: 300;
+  color: var(--color-text-card);
+  margin-bottom: 2rem;
+  line-height: 1;
+}
+
+.price-tag,
+.price-tag .text-p,
+.price-tag .text-p span {
+  align-self: center;
+  width: 100%;
+  text-align: center;
+}
+
+.features-list {
+  list-style: none;
+  /* width: 100%; */
+  text-align: left;
+  padding: 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon-check {
+  background-color: #111;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feature-text h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-text-card);
+  line-height: 1.5;
+  margin-bottom: 0.2rem;
+}
+
+.feature-text p {
+  font-size: 1.2rem;
+  color: #000;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.promo-section .cta-button {
+  display: block;
+  width: -webkit-fill-available;
+  background-color: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.4rem;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  padding: 1.5rem 0;
+  font-family: "RalewayBold";
+}
+
+.promo-section .cta-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.promo-section .cta-button:active {
+  transform: scale(0.98);
+}
+
+.disclaimer {
+  font-size: 1rem;
+  color: #000;
+  font-style: italic;
+  text-align: center;
+  width: 100%;
+}
+
+/* --- RESPONSIVE: DESKTOP (1440px) --- */
+.promo-section {
+  align-items: flex-start; /* Alinear arriba */
+}
+
+.price-tag .text-p {
+  font-size: 96px;
+  margin: 0;
+}
+.price-tag .text-p span {
+  font-size: 144px;
+}
+
+.feature-item {
+  margin-bottom: 2rem;
+}
+
+hr {
+  height: 1px;
+  width: 100%;
+  margin: 4rem 0 1rem 0;
+}
+.promo-section .countdow-register {
+  width: 100%;
+  margin-bottom: 2rem;
+  color: #2d83c0;
+  text-align: center;
+  font-size: 2.6rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.promo-section .countdow-register .number {
+  font-size: 3.8rem;
+  background-color: #f6f6f6;
+  border-radius: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  line-height: 1;
+  height: 6.5rem;
+  padding: 0 1.5rem;
+}
+  .promo-section_container .header-content h3 {
+    margin-top: 0;
+  }
+/* ========================= */
+/* 🖥️ DESKTOP(1440+) */
+/* ========================= */
+
+@media (min-width: 1440px) {
+  .promo-section_container .header-content h3,
+  .promo-section_container .header-content h3 span,
+  .promo-section_container .header-content h3 strong {
+    font-size: 6.4rem;
+  }
+
+  .promo-section_container .header-content .text-p.subtitle {
+    font-size: 1.6rem;
+    max-width: 50rem;
+  }
+  .promo-section .countdow-register {
+    font-size: 3.6rem;
+  }
+  .promo-section .countdow-register .number {
+    font-size: 4.8rem;
+  }
+
+  .feature-text h3 {
+  font-size: 2rem;
+
+  }
+  .feature-text p{
+  font-size: 1.6rem;
+
+  }
+}

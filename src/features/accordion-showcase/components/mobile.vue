@@ -1,6 +1,6 @@
 <template>
   <section
-    class="accordation-showCase-mobile container-global"
+    class="accordation-showCase-mobile"
     id="accordationshowCase"
   >
     <div class="container">
@@ -142,18 +142,13 @@ onMounted(() => {
   --text-sub: #4b5563;
   --accent-blue: #2eaaff;
   --card-bg: #ffffff;
-  --font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 .accordation-showCase-mobile {
   height: 100vh;
   background-color: #f8fafc;
-  padding: 50px 0px 0 20px;
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  padding-top: 5.5rem;
+  padding-bottom: 1.5rem;
   overflow: hidden;
 }
 
@@ -268,7 +263,7 @@ onMounted(() => {
 
 /* Swiper Pagination Customization */
 :deep(.accordation-swiper-container .swiper-pagination) {
-  bottom: 20px;
+  bottom: 0px;
 }
 
 :deep(.accordation-swiper-container .swiper-pagination-bullet) {

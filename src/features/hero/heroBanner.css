@@ -1,0 +1,133 @@
+/* HERO BASE */
+.heroBanner {
+  height: 118dvh;
+  min-height: 700px;
+
+  display: flex;
+  align-items: center;
+  background-image: url("/assets/heroBanner/hero-product-desktop.jpg");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+/* CONTENIDO */
+.hero-content {
+  width: 50%;
+  /* max-width: 50%; */
+}
+
+/* TITULO */
+.heroBanner h1 {
+  font-size: 6.4rem;
+  line-height: 1.1;
+  max-width: 20ch;
+}
+
+/* SUBTITULO */
+.heroBanner .hero-content .subtitle {
+  margin: 2rem 0 3.5rem 0;
+  font-size: 1.99rem;
+  color: #000;
+}
+
+/* FORM */
+.form input {
+  width: -webkit-fill-available;
+  /* max-width: 20ch; */
+  padding: 1.5rem 1.2rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  border: none;
+  background: #fff;
+}
+
+/* BOTONES */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: "RalewayExtraBold";
+  width: 100%;
+}
+button {
+  width: 50%;
+}
+button.primary,
+button a {
+  /* width: 100%; */
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.secondary a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  list-style: none;
+  text-decoration: none;
+  background: transparent;
+  border: 0.1rem solid #000;
+}
+
+/* PRIMARY */
+.primary {
+  background: black;
+  color: white;
+  border: none;
+}
+
+/* SECONDARY */
+.secondary {
+  /* width: stretch; */
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.secondary .icon {
+  margin-right: 10px;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .heroBanner {
+    height: 99dvh;
+    min-height: auto;
+  }
+  .heroBanner h1 {
+    font-size: 4.6rem;
+  }
+  .heroBanner .hero-content .subtitle {
+    margin: 1.5rem 0 1.9rem 0;
+    font-size: 1.412rem;
+  }
+
+  /* FORM */
+  .form input {
+    padding: 1rem 1.2rem;
+    font-size: 1.13rem;
+  }
+  /* BOTONES */
+  button.primary,
+  button a {
+    padding: 1rem 1.2rem;
+    font-size: 1.13rem;
+    margin-bottom: 1.3rem;
+  }
+  .secondary .icon svg {
+    width: 10px;
+    height: 13px;
+  }
+}
+
+
+/* ========================= */
+/* 🖥️ DESKTOP */
+/* ========================= */
+
+/* @media (min-width: 1920px) {
+} */

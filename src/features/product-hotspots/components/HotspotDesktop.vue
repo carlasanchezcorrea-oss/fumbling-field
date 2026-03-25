@@ -1,40 +1,56 @@
 <template>
-  <div class="hotspot" id="hotspot1">
-    <div
-      v-for="(hotspot, index) in hotspots"
-      :key="index"
-      class="hotspot-card"
-      :id="`hotspot-${index}`"
-      :class="{ active: hotspot.isOpen }"
-    >
-      <button
-        class="hotspot-button"
-        :class="{
-          active: hotspot.isActive,
-          clicked: hotspot.hasBeenClicked,
-        }"
-        :style="{
-          top: hotspot.position.top,
-          left: hotspot.position.left,
-          transform: `translate(-50%, -50%) scale(${hotspot.hasBeenClicked ? '0.9' : '1'})`,
-        }"
-        @click="toggleHotspot(index)"
-        :aria-label="`Feature ${index + 1}`"
-      >
-        <span class="hotspot-icon">
-          {{ hotspot.isActive ? "+" : "−" }}
-        </span>
-      </button>
+  <section>
+    <div class="product-image-container">
+      <!-- Imagen del producto -->
+      <img
+        src="/assets/dp-m2-product.png"
+        alt="DP-M2 Protein Dispenser"
+        class="product-image text-p"
+      />
+      <div class="hotspot" id="hotspot1">
+        <div
+          v-for="(hotspot, index) in hotspots"
+          :key="index"
+          class="hotspot-card"
+          :id="`hotspot-${index}`"
+          :class="{ active: hotspot.isOpen }"
+          :style="{
+            top: hotspot.position.top,
+            left: hotspot.position.left,
+          }"
+        >
+          <div class="hotspot-container">
+            <button
+              class="hotspot-button"
+              :class="{
+                active: hotspot.isActive,
+                clicked: hotspot.hasBeenClicked,
+              }"
+              :style="{
+                top: hotspot.position.top,
+                left: hotspot.position.left,
+                transform: `translate(-50%, -50%) scale(${hotspot.hasBeenClicked ? '0.9' : '1'})`,
+              }"
+              @click="toggleHotspot(index)"
+              :aria-label="`Feature ${index + 1}`"
+            >
+              <span class="hotspot-icon">
+                {{ hotspot.isActive ? "+" : "−" }}
+              </span>
+            </button>
 
-      <div :class="[`hotspot-line-${index}`]"></div>
+            <div :class="[`hotspot-line-${index}`]"></div>
 
-      <div :class="[`hotspot-content-${index}`]">
-        <h2 class="text-main">{{ hotspot.title }}</h2>
-        <h3 class="text-main">{{ hotspot.subtitle }}</h3>
-        <p class="text-p">{{ hotspot.description }}</p>
+            <div :class="[`hotspot-content hotspot-content-${index}`]">
+              <h2 class="text-h3">{{ hotspot.title }}</h2>
+              <h3 class="text-h3">{{ hotspot.subtitle }}</h3>
+              <p class="text-p">{{ hotspot.description }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -45,8 +61,8 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    isOpen: false,
-    position: { top: "28%", left: "63%" }, // Arriba derecha - contenedor transparente
+    isOpen: true,
+    position: { top: "42%", left: "58%" }, // Arriba derecha - contenedor transparente
     title: "Hopper",
     subtitle: "High-Capacity Storage. ",
     description:
@@ -57,7 +73,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "42%", left: "35%" }, // Abajo izquierda - contenedor transparente
+    position: { top: "58%", left: "41%" }, // Abajo izquierda - contenedor transparente
     title: "Agitator",
     subtitle: "Smooth Flow System.",
     description: "No clumps. No sticking. Just a clean, uninterrupted flow.",
@@ -68,7 +84,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "56%", left: "42%" }, // Centro izquierda - base negra
+    position: { top: "70%", left: "45%" }, // Centro izquierda - base negra
     title: "Nozzles",
     subtitle: "Controlled Pour.",
     description:
@@ -88,7 +104,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "52%", left: "60%" }, // Centro derecha - base negra
+    position: { top: "65%", left: "55%" }, // Centro derecha - base negra
     title: "Measuring Unit",
     subtitle: "Precision Core.",
     description:
@@ -99,7 +115,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "67%", left: "50%" }, // Abajo centro - base negra
+    position: { top: "82%", left: "50%" }, // Abajo centro - base negra
     boxText: { class: "" },
     line: { class: "" },
     title: "Heavy-Duty Stand",
@@ -230,6 +246,20 @@ onMounted(() => {
 
   transition: width 0.4s ease 0.35s;
 }
+#hotspot-0 .hotspot-container,
+#hotspot-1 .hotspot-container,
+#hotspot-2 .hotspot-container,
+#hotspot-3 .hotspot-container,
+#hotspot-4 .hotspot-container {
+  position: absolute;
+}
+#hotspot-0,
+#hotspot-1,
+#hotspot-2,
+#hotspot-3,
+#hotspot-4 {
+  position: absolute;
+}
 .hotspot-card.active .hotspot-line-0::before,
 .hotspot-card.active .hotspot-line-1::before,
 .hotspot-card.active .hotspot-line-2::before,
@@ -286,24 +316,24 @@ onMounted(() => {
 /* LINEA */
 /* LINEA HORIZONTAL */
 .hotspot-line-0::before {
-  top: 180px;
-  left: 310px;
+  top: 0rem;
+  left: 0rem;
 }
 .hotspot-card.active .hotspot-line-0::before {
-  width: 192px;
+  width: 19.5rem;
 }
 
 /* LINEA VERTICAL */
 .hotspot-line-0::after {
-  top: 150px;
-  left: 500px;
+  bottom: 0rem;
+  left: 19.25rem;
 }
 
 /* TEXTO */
 .hotspot-content-0 {
-  top: 7%;
-  right: -40%;
-  width: 270px;
+  bottom: 3rem;
+  left: 12rem;
+  width: 18rem;
 }
 
 /* --------------- hotspot-line-1 -------------- */
@@ -311,12 +341,12 @@ onMounted(() => {
 /* LINEA HORIZONTAL */
 
 .hotspot-line-1::before {
-  top: 270px;
-  right: -180px;
+  top: 0rem;
+  right: 0em;
 }
 
 .hotspot-card.active .hotspot-line-1::before {
-  width: 192px;
+  width: 19.2rem;
 }
 
 /* LINEA VERTICAL */
@@ -328,8 +358,8 @@ onMounted(() => {
   height: 30px;
   background: #2ab8ff;
 
-  top: 240px;
-  right: 10px;
+  bottom: 0rem;
+  right: 19rem;
 
   transform: scaleY(0);
   transform-origin: bottom;
@@ -340,9 +370,9 @@ onMounted(() => {
 /* TEXTO */
 .hotspot-content-1 {
   position: absolute;
-  top: 19%;
-  right: 73%;
-  width: 270px;
+  bottom: 3rem;
+  right: 5rem;
+  width: 20rem;
   opacity: 0;
   transform: translateY(10px);
   transition: 0.6s;
@@ -358,8 +388,8 @@ onMounted(() => {
   height: 2px;
   background: #2ab8ff;
 
-  top: 360px;
-  right: -210px;
+  top: 0rem;
+  right: 0rem;
 
   transition: width 0.4s ease 0.35s;
 }
@@ -377,8 +407,8 @@ onMounted(() => {
   height: 30px;
   background: #2ab8ff;
 
-  top: 360px;
-  right: 10px;
+  top: 0rem;
+  right: 22rem;
 
   transform: scaleY(0);
   transform-origin: bottom;
@@ -389,9 +419,9 @@ onMounted(() => {
 /* TEXTO */
 .hotspot-content-2 {
   position: absolute;
-  top: 62%;
-  right: 73%;
-  width: 270px;
+  top: 3rem;
+  right: 10rem;
+  width: 17rem;
   opacity: 0;
   transform: translateY(10px);
   transition: 0.6s;
@@ -401,8 +431,8 @@ onMounted(() => {
 /* LINEA */
 /* LINEA HORIZONTAL */
 .hotspot-line-3::before {
-  top: 340px;
-  left: 310px;
+  top: 0rem;
+  left: 0rem;
 }
 .hotspot-card.active .hotspot-line-3::before {
   width: 192px;
@@ -410,23 +440,23 @@ onMounted(() => {
 
 /* LINEA VERTICAL */
 .hotspot-line-3::after {
-  top: 310px;
-  left: 500px;
+  bottom: 0rem;
+  left: 19rem;
 }
 
 /* TEXTO */
 .hotspot-content-3 {
-  top: 32%;
-  right: -40%;
-  width: 270px;
+  bottom: 3rem;
+  left: 12rem;
+  width: 20rem;
 }
 
 /* --------------- hotspot-line-4 -------------- */
 /* LINEA */
 /* LINEA HORIZONTAL */
 .hotspot-line-4::before {
-  top: 435px;
-  left: 240px;
+  top: 0rem;
+  left: 0rem;
 }
 .hotspot-card.active .hotspot-line-4::before {
   width: 150px;
@@ -442,9 +472,116 @@ onMounted(() => {
 
 /* TEXTO */
 .hotspot-content-4 {
-  top: 60%;
-  right: -35%;
+  bottom: -3rem;
+  left: 16.5rem;
   width: 270px;
 }
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========================= */
+/* 💻 DESKTOP (1024+) */
+/* ========================= */
+/* SECTION */
+@media (min-width: 1024px) {
+}
+
+/* ========================= */
+/* 💻 DESKTOP (1440++) */
+/* ========================= */
+/* SECTION */
+@media (min-width: 1440px) {
+  .product-image {
+    width: 82.4rem;
+    height: 82.4rem;
+  }
+
+  .hotspot-button {
+    width: 32px;
+    height: 32px;
+  }
+  .hotspot-button .hotspot-icon {
+    font-weight: bold;
+    font-size: 2.4rem;
+  }
+  /* Bullets position */
+  #hotspot-0 {
+    top: 38% !important;
+  }
+  #hotspot-1 {
+    top: 55% !important;
+  }
+  #hotspot-2 {
+    top: 67% !important;
+  }
+  #hotspot-3 {
+    top: 62% !important;
+  }
+  /* --------------- hotspot-line-0 -------------- */
+  .product-image-container .hotspot-content-0 {
+    width: 27rem;
+    bottom: 6rem;
+  }
+  /* --------------- hotspot-line-1 -------------- */
+  .product-image-container .hotspot-content-1 {
+    width: 27rem;
+    bottom: 6rem;
+    right: 10rem;
+  }
+  /* --------------- hotspot-line-2 -------------- */
+  .product-image-container .hotspot-content-2 {
+    width: 27rem;
+  top: 6rem;
+  right: 15rem;
+  }
+  .hotspot-card.active .hotspot-line-2::before {
+    width: 30rem;
+  }
+  /* LINEA VERTICAL */
+  .hotspot-line-2::after {
+  right: 29.9rem;
+  }
+  /* --------------- hotspot-line-3 -------------- */
+  .product-image-container .hotspot-content-3 {
+    width: 27rem;
+    bottom: 6rem;
+    left: 17rem;
+  }
+  .hotspot-card.active .hotspot-line-3::before {
+    width: 25rem;
+  }
+  /* LINEA VERTICAL */
+  .hotspot-line-3::after {
+    left: 24.9rem;
+  }
+
+   /* --------------- hotspot-line-4 -------------- */
+  .product-image-container .hotspot-content-4 {
+    left: 30rem; 
+  }
+  .hotspot-card.active .hotspot-line-4::before {
+    width: 27rem;
+  }
+
+  /* --------------- TEXT-------------- */
+  .product-image-container .hotspot-content h2 {
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .product-image-container .hotspot-content h3 {
+    font-size: 1.6rem;
+    margin: 0;
+    line-height: 2;
+  }
+  .product-image-container .hotspot-content p {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+}
 </style>
->

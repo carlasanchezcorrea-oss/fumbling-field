@@ -1,1 +1,111 @@
+/* ========================= */
+/* DEFAULT */
+/* 🖥️ DESKTOP(1024+) */
+/* ========================= */
+/* SECTION */
+.cta {
+  background: #0a3266;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+  color: #fff;
+}
 
+/* CONTAINER */
+.cta-container {
+  max-width: 124.8rem;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+.cta-container .cta-text,
+.cta-container .cta-form {
+  width: 50%;
+}
+
+/* TEXT */
+.cta-text {
+  max-width: 52rem;
+}
+
+.cta-text h3 {
+  font-size: 2.55rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-text p {
+  opacity: 0.85;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* FORM */
+.cta-form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.cta-form input {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: none;
+  flex: 1;
+}
+
+.cta-form button {
+  min-width: 170px;
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #1e88e5;
+  color: white;
+  cursor: pointer;
+}
+
+/* ========================= */
+/* ✨ ANIMACIÓN */
+/* ========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-out;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal p {
+  text-align: justify;
+}
+
+/* Delay para efecto más PRO */
+.delay {
+  transition-delay: 0.15s;
+}
+
+/* ========================= */
+/* DEFAULT */
+/* 🖥️ DESKTOP(1440+) */
+/* ========================= */
+/* SECTION */
+@media (min-width: 1440px) {
+  .cta {
+    padding-top: 8.5rem;
+    padding-bottom: 8.5rem;
+  }
+
+  .cta-text h3 {
+    font-size: 3.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-text p {
+    font-size: 1.6rem;
+  }
+}

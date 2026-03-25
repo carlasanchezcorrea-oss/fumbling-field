@@ -1,14 +1,19 @@
+---
+import "./product-intro.css";
+---
+
 <section class="feature container-global" id="problem">
   <div class="container">
     <!-- BLOQUE 1 -->
     <div class="row">
       <div class="image">
         <div class="image-1"></div>
+        <!-- <img src="/assets/productIntro/product-1.jpg" alt="" /> -->
       </div>
 
       <div class="text">
-        <h2 class="text-main">Still using a scoop?</h2>
-        <h3 class="text-main">It's time for an upgrade</h3>
+        <h3 class="text-h3">Still using a scoop?</h3>
+        <p class="text-h3 sub">It's time for an upgrade</p>
         <p class="text-description">
           The traditional way is messy, slow, and unnecessarily frustrating.
         </p>
@@ -19,16 +24,16 @@
     <div class="row reverse">
       <div class="image">
         <div class="image-2"></div>
+        <!-- <img src="/assets/productIntro/product-2.jpg" alt="" /> -->
       </div>
 
       <div class="text">
-        <h2 class="text-main">Why scoop when you can slide?</h2>
-        <h3 class="text-main">Meet the DP-M2</h3>
+        <h3 class="text-h3">Why scoop when you can slide?</h3>
+        <p class="text-h3 sub">Meet the DP-M2</p>
         <p class="text-description">
           The precision your routine deserves.
-          <br>
-          One slide. Perfect portion. In
-          seconds. No mess. No friction.
+          <br />
+          One slide. Perfect portion. In seconds. No mess. No friction.
         </p>
       </div>
     </div>
@@ -53,78 +58,7 @@
   rows.forEach((row) => observer.observe(row));
 </script>
 
-<style>
-  /* SECTION */
-  .feature {
-    background: #fff;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-
-  /* ROW */
-  .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 60px;
-    margin-bottom: 100px;
-
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
-  }
-  .row:nth-child(2) {
-    margin-bottom: 0px;
-  }
-
-  /* ANIMACIÓN */
-  .row.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* REVERSE */
-  .reverse {
-    flex-direction: row-reverse;
-  }
-
-  /* IMAGE */
-  .image div {
-    width: 612px;
-    height: 538px;
-    border-radius: 20px;
-    background-size: cover;
-    background-position: right center;
-    background-repeat: no-repeat;
-  }
-  .image > .image-1 {
-    background-image: url("/assets/productIntro/product-1.jpg");
-  }
-  .image > .image-2 {
-    background-image: url("/assets/productIntro/product-2.jpg");
-  }
-
-  /* TEXT */
-  .text {
-    max-width: 500px;
-    color: #000;
-  }
-
-  .text h2 {
-    font-size: 36px;
-    margin-bottom: 24px;
-  }
-
-  .text h3 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  .text p {
-    font-size: 16px;
-  }
-
+<style scoped>
   /* ========================= */
   /* 📱 MOBILE (390px) */
   /* ========================= */
@@ -140,15 +74,26 @@
       gap: 20px;
       margin-bottom: 60px;
     }
+    .row .image,
+    .row .text {
+      width: 100%;
+    }
 
     .reverse {
       flex-direction: column;
     }
 
-    .text h2 {
-      font-size: 34px;
+    .text h3 {
+      font-size: 3.4rem;
     }
-
+    .feature .text-h3.sub {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .feature .text-description {
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
     /* IMAGE */
     .image div {
       width: 100%;
@@ -163,20 +108,6 @@
       min-width: 100%;
       height: 300px;
       background-position: top;
-    }    
-  }
-
-  /* ========================= */
-  /* 💻 DESKTOP GRANDE (1440+) */
-  /* ========================= */
-
-  @media (min-width: 1440px) {
-    .feature {
-      /* padding: 140px 120px; */
-    }
-
-    .text h2 {
-      /* font-size: 44px; */
     }
   }
 </style>

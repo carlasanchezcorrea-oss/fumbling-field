@@ -3,7 +3,7 @@
     <div class="container">
       <!-- Header -->
       <div class="header">
-        <h1 class="title text-main">Crafted for Everyday Precision.</h1>
+        <h1 class="title text-h3">Crafted for Everyday Precision.</h1>
         <div class="description text-p">
           <p>
             DP-M2 blends meticulous Japanese engineering with a minimalist,
@@ -17,13 +17,7 @@
 
       <!-- Product Container -->
       <div class="product-wrapper">
-        <div class="product-image-container">
-          <!-- Imagen del producto -->
-          <img
-            src="/assets/dp-m2-product.png"
-            alt="DP-M2 Protein Dispenser"
-            class="product-image text-p"
-          />
+
 
           <!-- Hotspots interactivos -->
         <HotspotDesktop
@@ -38,7 +32,6 @@
           @toggle="toggleHotspot"
         />
 
-        </div>
       </div>
     </div>
   </section>
@@ -150,13 +143,6 @@ onUnmounted(() => {
   /* display: flex;
   justify-content: center;
   align-items: center; */
-}
-
-.product-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
 }
 
 /* Responsive - Desktop (1440px) */

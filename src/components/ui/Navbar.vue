@@ -44,14 +44,16 @@ onUnmounted(() => {
       <!-- HAMBURGER -->
       <div class="hamburger" @click="toggleMenu">
         <svg
-          width="30"
-          height="30"
-          :stroke="isScrolled ? '#fff' : '#000'"
+          width="40"
+          height="27"
+          viewBox="0 0 40 27"
           fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <line x1="5" y1="8" x2="25" y2="8" stroke-width="3" />
-          <line x1="5" y1="15" x2="25" y2="15" stroke-width="3" />
-          <line x1="5" y1="22" x2="25" y2="22" stroke-width="3" />
+          <path
+            d="M2.22222 26.6667H37.7778C39 26.6667 40 25.6667 40 24.4444C40 23.2222 39 22.2222 37.7778 22.2222H2.22222C1 22.2222 0 23.2222 0 24.4444C0 25.6667 1 26.6667 2.22222 26.6667ZM2.22222 15.5556H37.7778C39 15.5556 40 14.5556 40 13.3333C40 12.1111 39 11.1111 37.7778 11.1111H2.22222C1 11.1111 0 12.1111 0 13.3333C0 14.5556 1 15.5556 2.22222 15.5556ZM0 2.22222C0 3.44444 1 4.44444 2.22222 4.44444H37.7778C39 4.44444 40 3.44444 40 2.22222C40 1 39 0 37.7778 0H2.22222C1 0 0 1 0 2.22222Z"
+            fill="black"
+          />
         </svg>
       </div>
     </div>
@@ -89,7 +91,7 @@ nav {
   z-index: 1000;
   top: 0;
   left: 0;
-  width: 100%;   
+  width: -webkit-fill-available;
   transition: background 0.3s;
 }
 .navbar {
@@ -116,9 +118,9 @@ nav.scrolled {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: black;
+  background: rgb(0, 0, 0 ,0.5);
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   z-index: 2000;
 }
 
@@ -128,6 +130,7 @@ nav.scrolled {
   min-width: 300px;
   padding: 60px 40px;
   color: white;
+  background: #000;
 }
 
 /* BOTÓN CERRAR */
@@ -137,9 +140,10 @@ nav.scrolled {
   color: white;
   font-size: 28px;
   position: absolute;
-  right: 40px;
+  right: 2rem;
   top: 30px;
   cursor: pointer;
+  text-align: end;
 }
 
 /* MENU ITEMS */
@@ -152,6 +156,7 @@ li {
   margin: 20px 0;
   cursor: pointer;
   font-size: 18px;
+  font-family: "RalewayRegular";
 }
 
 /* DIVIDER */
@@ -164,6 +169,7 @@ li {
 .footer-links li {
   font-size: 14px;
   color: #aaa;
+  text-align: center;
 }
 
 .invert {
@@ -177,6 +183,48 @@ li {
   .logo img {
     width: 147px;
     max-width: 147px;
+  }
+  .hamburger svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+/* ========================= */
+/* 🖥️ DESKTOP */
+/* ========================= */
+@media (min-width: 1024px) {
+  nav .logo {
+    padding: 0 1rem;
+  }
+  .navbar .logo img {
+    width: 18.7rem;
+    max-width: 18.7rem;
+  }
+  nav .hamburger {
+    padding-right: 1.2rem;
+  }
+  nav .hamburger svg {
+    width: 3rem;
+    height: 2.85rem;
+  }
+  /* OVERLAY */
+  .overlay {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 1260px) {
+  .navbar .logo img {
+    width: 26.2rem;
+    max-width: 26.2rem;
+  }
+  nav .hamburger {
+    padding-top: 0.5rem;
+    padding-right: 1.2rem;
+  }
+  nav .hamburger svg {
+    width: 4rem;
+    height: 2.85rem;
   }
 }
 </style>
