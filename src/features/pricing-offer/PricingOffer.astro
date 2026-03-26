@@ -135,16 +135,24 @@ import "./pricing.css";
   /* ========================= */
   /* Ajustes específicos para Mobile 390px */
   @media (max-width: 480px) {
+    .promo-section {
+      background-size: cover;
+      background-size: 222% 158%;
+      background-position: top center;
+      background-position-y: -42rem;
+      background-position-x: -33rem;
+    }
     .promo-section .header-content .subtitle {
       max-width: 100%;
     }
     .promo-section .header-content .text-p.subtitle {
       font-size: 1.6rem;
     }
-    .promo-section .header-content, .header-conten .card,
-    .header-conten .card {
-      width: 100%;
-      min-width: 100%;
+    .promo-section .header-content,
+    .promo-section_container .card {
+      /* width: 100%;
+      min-width: 100%; */
+      width: auto;
     }
     .promo-section_container {
       flex-direction: column;

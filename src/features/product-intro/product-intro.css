@@ -67,16 +67,20 @@
   color: #000;
 }
 .feature .text h3 {
+  margin-top: 0em;
   font-size: 2.55rem;
   margin-bottom: 2.4rem;
 }
 .feature .text-h3.sub {
+  margin: 0rem;
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
 }
 .feature .text-description {
   font-size: 1.14rem;
   line-height: 1.5;
+  margin: 0rem;
+
 }
 
 /* ========================= */

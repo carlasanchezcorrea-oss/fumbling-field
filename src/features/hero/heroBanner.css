@@ -1,12 +1,13 @@
 /* HERO BASE */
 .heroBanner {
-  height: 118dvh;
+  height: 100dvh;
   min-height: 700px;
-
+  background-color: #EBEDEF;
   display: flex;
   align-items: center;
   background-image: url("/assets/heroBanner/hero-product-desktop.jpg");
   background-size: cover;
+  background-size: auto 100%;
   background-position: right center;
   background-repeat: no-repeat;
 }

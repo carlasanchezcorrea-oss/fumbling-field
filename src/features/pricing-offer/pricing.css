@@ -16,7 +16,7 @@
 
 .promo-section {
   position: relative;
-    /* width: 100%; */
+  /* width: 100%; */
   background-image: url("/assets/pricingOffer/bg.jpg");
   background-size: cover;
   background-position: center;
@@ -26,6 +26,7 @@
   justify-content: center;
   padding-top: 5.5rem;
   padding-bottom: 5.5rem;
+  background-repeat: no-repeat;
 }
 
 .background-overlay {
@@ -39,9 +40,9 @@
 }
 
 .promo-section_container {
+  width: 100%;
   position: relative;
   z-index: 2;
-  width: 100%;
   max-width: 1200px;
   display: flex;
   flex-direction: row;
@@ -54,8 +55,7 @@
   color: var(--color-text-main);
 }
 
-.promo-section .header-content,
-.header-conten .card {
+.promo-section .header-content {
   width: 50%;
   min-width: 50%;
 }
@@ -87,7 +87,7 @@
 }
 
 /* Card Styles */
-.card {
+.promo-section_container .card {
   background: var(--color-card-bg);
   border-radius: 24px;
   padding: 2.5rem 5.5rem;
@@ -96,7 +96,6 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  width: 100%;
 }
 
 .price-tag {
@@ -210,7 +209,6 @@
 }
 
 hr {
-  height: 1px;
   width: 100%;
   margin: 4rem 0 1rem 0;
 }
@@ -237,13 +235,19 @@ hr {
   height: 6.5rem;
   padding: 0 1.5rem;
 }
-  .promo-section_container .header-content h3 {
-    margin-top: 0;
-  }
+.promo-section_container .header-content h3 {
+  margin-top: 0;
+}
 /* ========================= */
 /* 🖥️ DESKTOP(1440+) */
 /* ========================= */
-
+@media (min-width: 1024px) {
+  .promo-section_container {
+    justify-content: space-between;
+    max-width: 1248px;
+    margin: auto;
+  }
+}
 @media (min-width: 1440px) {
   .promo-section_container .header-content h3,
   .promo-section_container .header-content h3 span,
@@ -263,11 +267,9 @@ hr {
   }
 
   .feature-text h3 {
-  font-size: 2rem;
-
+    font-size: 2rem;
   }
-  .feature-text p{
-  font-size: 1.6rem;
-
+  .feature-text p {
+    font-size: 1.6rem;
   }
 }

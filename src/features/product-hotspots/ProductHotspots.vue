@@ -201,6 +201,12 @@ onUnmounted(() => {
     font-size: 1.25rem;
   }
 
+  /* Product Wrapper */
+  .product-wrapper {
+    height: 100vh;
+    padding: 0;
+  }
+
   /* Ajustar posiciones para mobile si es necesario */
   @media (max-width: 400px) {
     .hotspot-button {

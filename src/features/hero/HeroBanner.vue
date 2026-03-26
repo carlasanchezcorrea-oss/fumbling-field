@@ -10,8 +10,8 @@
         </h1>
 
         <p class="subtitle text-description">
-          <strong class="text-main">Fast. Clean. Consistent.</strong> Precision in
-          one smooth motion.
+          <strong class="text-main">Fast. Clean. Consistent.</strong> Precision
+          in one smooth motion.
         </p>
 
         <div class="form">
@@ -68,7 +68,7 @@
     align-items: flex-start;
     justify-content: center;
     background-image: url("/assets/heroBanner/hero-product-mobile.jpg");
-
+    background-size: cover;
     /* 🔥 importante para mobile */
     background-position: center bottom;
   }

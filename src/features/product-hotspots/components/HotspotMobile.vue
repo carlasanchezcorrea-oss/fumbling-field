@@ -3,7 +3,7 @@
     <div class="product-image-container">
       <!-- Imagen del producto -->
       <img
-        src="/assets/dp-m2-product.png"
+        src="/assets/hotspot/product.png"
         alt="DP-M2 Protein Dispenser"
         class="product-image text-p"
       />
@@ -41,9 +41,9 @@
             left: hotspot.contentOffset.left,
           }"
         >
-          <h2>{{ hotspot.title }}</h2>
-          <h3>{{ hotspot.subtitle }}</h3>
-          <p>{{ hotspot.description }}</p>
+          <h2 class="text-h3">{{ hotspot.title }}</h2>
+          <h3 class="text-h3">{{ hotspot.subtitle }}</h3>
+          <p class="text-p">{{ hotspot.description }}</p>
         </div>
       </div>
     </div>
@@ -58,8 +58,8 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    isOpen: true,
-    position: { top: "55%", left: "63%" }, // Arriba derecha - contenedor transparente
+    isOpen: false,
+    position: { top: "25%", left: "87%" }, // Arriba derecha - contenedor transparente
     title: "Hopper",
     subtitle: "High-Capacity Storage. ",
     description:
@@ -69,20 +69,21 @@ const hotspots = ref([
     lineStyle: {
       "--line-top": "0px",
       "--line-left": "0px",
-      "--line-width": "50px",
+      "--line-width": "40px",
 
-      "--line-after-top": "-98px",
-      "--line-after-left": "50px",
-      "--line-height": "100px",
+      "--line-after-top": "-123px",
+      "--line-after-left": "40px",
+      "--line-height": "125px",
       "--origin": "bottom",
     },
 
-    contentOffset: { top: "-220px", left: "50%" },
+    contentOffset: { top: "-250px", left: "40%" },
   },
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "63%", left: "35%" }, // Abajo izquierda - contenedor transparente
+    isOpen: false,
+    position: { top: "43%", left: "35%" }, // Abajo izquierda - contenedor transparente
     title: "Agitator",
     subtitle: "Smooth Flow System.",
     description: "No clumps. No sticking. Just a clean, uninterrupted flow.",
@@ -94,18 +95,19 @@ const hotspots = ref([
       "--line-right": "0px",
       "--line-width": "60px",
 
-      "--line-after-top": "-128px",
+      "--line-after-top": "-178px",
       "--line-after-right": "60px",
-      "--line-height": "130px",
+      "--line-height": "180px",
       "--origin": "top",
     },
 
-    contentOffset: { top: "-250px", left: "30px" },
+    contentOffset: { top: "-300px", left: "30px" },
   },
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "70%", left: "42%" }, // Centro izquierda - base negra
+    isOpen: false,
+    position: { top: "60%", left: "42%" }, // Centro izquierda - base negra
     title: "Nozzles",
     subtitle: "Controlled Pour.",
     description:
@@ -137,7 +139,8 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "67%", left: "60%" }, // Centro derecha - base negra
+    isOpen: false,
+    position: { top: "52%", left: "75%" }, // Centro derecha - base negra
     title: "Measuring Unit",
     subtitle: "Precision Core.",
     description:
@@ -147,19 +150,20 @@ const hotspots = ref([
     lineStyle: {
       "--line-top": "0px",
       "--line-left": "0px",
-      "--line-width": "50px",
+      "--line-width": "70px",
 
       "--line-after-top": "0px",
-      "--line-after-left": "50px",
-      "--line-height": "160px",
+      "--line-after-left": "70px",
+      "--line-height": "200px",
       "--origin": "bottom",
     },
 
-    contentOffset: { top: "160px", left: "20px" },
+    contentOffset: { top: "210px", left: "20px" },
   },
   {
     isActive: true,
     hasBeenClicked: false,
+    isOpen: true,
     position: { top: "77%", left: "50%" }, // Abajo centro - base negra
     boxText: { class: "" },
     line: { class: "" },
@@ -205,13 +209,32 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* w:364px ; h: 756px Original*/
+/* max-w:182 ; h: 378 Mobile max*/
+
 .product-image {
-  width: 100%;
-  height: 100%;
+  width: 182px;
+  height: 378px;
   object-fit: contain;
   display: block;
 }
+/* Hotspot Buttons TEXT */
+.hotspot-mobile-card h2 {
+  font-size: 2rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.hotspot-mobile-card h3,
+.hotspot-mobile-card p {
+  line-height: 1.2;
+  font-size: 1.6em;
+  margin: 0;
+}
 
+.product-image-container {
+  position: relative;
+}
 /* Hotspot Buttons */
 .hotspot-mobile-button {
   position: absolute;
@@ -351,11 +374,10 @@ onMounted(() => {
 .hotspot-mobile-content {
   position: absolute;
 
-  transform: translateX(-50%);
+  transform: translateX(-60%);
 
-  width: min(260px, 90vw);
+  width: min(250px, 80vw);
 
-  padding: 12px;
   box-sizing: border-box;
 
   opacity: 0;

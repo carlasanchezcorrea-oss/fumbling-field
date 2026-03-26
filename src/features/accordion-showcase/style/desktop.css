@@ -237,6 +237,8 @@ body .options {
   width: calc(100% - 100px); */
   height: 50.5rem;
   /* justify-content: center; */
+  max-width: 1248px;
+  margin: auto;
 }
 
 body .options .option2 {
@@ -466,5 +468,5 @@ body .options .option2.active .label .info .main {
   }
   body .options .option2:not(.active) .label .info .main {
     font-size: 2.4rem;
-}
+  }
 }

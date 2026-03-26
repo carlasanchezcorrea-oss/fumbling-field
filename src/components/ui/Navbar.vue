@@ -42,7 +42,7 @@ onUnmounted(() => {
       </div>
 
       <!-- HAMBURGER -->
-      <div class="hamburger" @click="toggleMenu">
+      <div class="hamburger" @click="toggleMenu" :class="{ invert: isScrolled }"> 
         <svg
           width="40"
           height="27"
@@ -118,7 +118,7 @@ nav.scrolled {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgb(0, 0, 0 ,0.5);
+  background: rgb(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   z-index: 2000;
@@ -189,6 +189,22 @@ li {
     height: 2.5rem;
   }
 }
+@media (max-width: 426px) {
+  /* OVERLAY */
+  .overlay {
+    background: rgb(0, 0, 0, 1);
+  }
+}
+
+@media (min-width: 426px) {
+  /* OVERLAY */
+  .overlay {
+    background: rgb(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
 /* ========================= */
 /* 🖥️ DESKTOP */
 /* ========================= */
@@ -220,7 +236,7 @@ li {
     right: 5rem;
   }
   .menu-right ul {
-    margin-top : 5rem;
+    margin-top: 5rem;
   }
 }
 
