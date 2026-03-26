@@ -1,8 +1,5 @@
 <template>
-  <section
-    class="accordation-showCase-mobile"
-    id="accordationshowCase"
-  >
+  <section class="accordation-showCase-mobile" id="accordationshowCase">
     <div class="container">
       <!-- Swiper Carousel -->
       <div
@@ -13,12 +10,12 @@
         <Swiper
           :slides-per-view="1.05"
           :loop="true"
+          :modules="modules"
+          :pagination="{ clickable: true }"
           :autoplay="{
             delay: 4000,
             disableOnInteraction: false,
           }"
-          :modules="modules"
-          :pagination="{ clickable: true }"
           @swiper="
             (swiper) => {
               swiper.params.pagination.el = paginationEl;
@@ -145,7 +142,7 @@ onMounted(() => {
 }
 
 .accordation-showCase-mobile {
-  height: 100vh;
+  height: 90vh;
   background-color: #f8fafc;
   padding-top: 5.5rem;
   padding-bottom: 1.5rem;
@@ -263,7 +260,7 @@ onMounted(() => {
 
 /* Swiper Pagination Customization */
 :deep(.accordation-swiper-container .swiper-pagination) {
-  bottom: 0px;
+  bottom: 2.5rem;
 }
 
 :deep(.accordation-swiper-container .swiper-pagination-bullet) {
@@ -285,22 +282,24 @@ onMounted(() => {
   background-size: cover;
   background-position: bottom center;
   background-repeat: no-repeat;
-  background-size: 250%;
+  background-size: auto 151%;
 }
 .accordation-showCase-mobile .slide-swiper-02 {
   background-image: url("/assets/accordionShowCase/slide-2-bg.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: bottom center;
   background-position-x: 28%;
   background-repeat: no-repeat;
-  background-size: 220%;
+  background-size: auto 130%;
+  background-position-y: -14rem;
 }
 .accordation-showCase-mobile .slide-swiper-03 {
   background-image: url("/assets/accordionShowCase/slide-3-bg.jpg");
   background-size: cover;
   background-position: bottom center;
   background-repeat: no-repeat;
-  background-size: 230%;
+  background-size: auto 131%;
+  background-position-y: -14rem;
 }
 .accordation-showCase-mobile .accordation-showCase-mobile-card {
   position: relative;
@@ -328,12 +327,12 @@ onMounted(() => {
   padding: 2rem 1.5rem;
   border-radius: 20px;
   width: 100%;
-  height: 90%;
+  height: 85%;
   margin: 0 auto;
 }
 
 .accordation-showCase-mobile .swiper-slide {
-  padding: 0 10px;
-  height: 90vh;
+  padding: 1rem 10px;
+  height: 88vh;
 }
 </style>

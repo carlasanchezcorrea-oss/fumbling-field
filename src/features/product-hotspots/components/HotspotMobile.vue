@@ -58,7 +58,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    isOpen: false,
+    isOpen: true,
     position: { top: "25%", left: "87%" }, // Arriba derecha - contenedor transparente
     title: "Hopper",
     subtitle: "High-Capacity Storage. ",
@@ -163,7 +163,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    isOpen: true,
+    isOpen: false,
     position: { top: "77%", left: "50%" }, // Abajo centro - base negra
     boxText: { class: "" },
     line: { class: "" },
