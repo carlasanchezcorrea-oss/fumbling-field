@@ -211,6 +211,8 @@
 hr {
   width: 100%;
   margin: 4rem 0 1rem 0;
+  color: #D9D9D9;
+  border: 1px solid;
 }
 .promo-section .countdow-register {
   width: 100%;

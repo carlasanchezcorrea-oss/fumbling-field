@@ -75,10 +75,10 @@ onUnmounted(() => {
       <div class="divider"></div>
 
       <ul class="footer-links">
-        <li>Privacy Policy</li>
-        <li>Terms & Conditions</li>
-        <li>Refund Policy</li>
-        <li>特定商取引法に基づく表記</li>
+        <li><a target="_blank" rel="noopener reference" href="/privacy-policy">Privacy Policy</a></li>
+        <li><a target="_blank" rel="noopener reference" href="/terms-and-conditions">Terms & Conditions</a></li>
+        <li><a target="_blank" rel="noopener reference" href="/refund-policy">Refund Policy</a></li>
+        <li><a target="_blank" rel="noopener reference" href="/specified-commercial-transactions">特定商取引法に基づく表記</a></li>
       </ul>
     </div>
   </div>
@@ -157,6 +157,7 @@ li {
   cursor: pointer;
   font-size: 18px;
   font-family: "RalewayRegular";
+  color: white;
 }
 
 /* DIVIDER */
@@ -170,6 +171,15 @@ li {
   font-size: 14px;
   color: #aaa;
   text-align: center;
+}
+li a {
+  text-decoration: none;
+  color: white;
+  margin: 20px 0;
+  cursor: pointer;
+  font-family: "RalewayRegular";
+  color: #aaa;
+  font-size: 14px;
 }
 
 .invert {
