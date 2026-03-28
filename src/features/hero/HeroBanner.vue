@@ -2,6 +2,9 @@
 
 <template>
   <section class="heroBanner container-global">
+    <div class="heroBanner_item-bg">
+      <img src="/assets/heroBanner/item-product.png" alt="" />
+    </div>
     <div class="container-global_box">
       <div class="hero-content">
         <h1 class="text-title">
@@ -71,6 +74,9 @@
     background-size: cover;
     /* 🔥 importante para mobile */
     background-position: center bottom;
+  }
+  .heroBanner .heroBanner_item-bg {
+    display: none;
   }
 
   .hero-content {

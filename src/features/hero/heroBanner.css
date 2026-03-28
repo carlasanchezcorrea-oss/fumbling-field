@@ -5,13 +5,29 @@
   background-color: #EBEDEF;
   display: flex;
   align-items: center;
-  background-image: url("/assets/heroBanner/hero-product-desktop.jpg");
+  background-image: url("/assets/heroBanner/bg-desktop.jpg");
   background-size: cover;
-  background-size: auto 100%;
   background-position: right center;
   background-repeat: no-repeat;
+  position: relative;
 }
+.heroBanner .heroBanner_item-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 
+  /* background-image: url("/assets/heroBanner/item-product.png"); */
+  /* background-size: cover; */
+  background-size: auto;
+  background-position: right center;
+  background-repeat: no-repeat;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+  cursor: default;
+}
 /* CONTENIDO */
 .hero-content {
   width: 50%;
@@ -124,7 +140,6 @@ button a {
     height: 13px;
   }
 }
-
 
 /* ========================= */
 /* 🖥️ DESKTOP */
