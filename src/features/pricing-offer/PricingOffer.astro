@@ -115,11 +115,13 @@ import "./pricing.css";
       </div>
 
       <!-- BUTTON -->
+      <!-- href="https://tu-enlace-aqui.com"
+      target="_blank" -->
+
       <a
-        href="https://tu-enlace-aqui.com"
-        target="_blank"
         rel="noopener noreferrer"
         class="text-main cta-button"
+        id="cta-checkout"
       >
         Reserve My Spot Now
       </a>
@@ -128,6 +130,30 @@ import "./pricing.css";
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("cta-checkout");
+
+    if (btn) {
+      btn.addEventListener("click", () => {
+        console.log("🟢 Click en CTA");
+
+        if (typeof gtag === "function") {
+          gtag("event", "InitiateCheckout", {
+            currency: "USD",
+            value: 1,
+            debug_mode: true, // 👈 CLAVE
+          });
+
+          console.log("📡 Evento enviado a GA4");
+        } else {
+          console.warn("⚠️ gtag no está definido");
+        }
+      });
+    }
+  });
+</script>
 
 <style scoped>
   /* ========================= */

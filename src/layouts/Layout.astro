@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
 const GA_ID = import.meta.env.PUBLIC_GA_ID;
+console.log("GA_ID desde Astro:", GA_ID);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,15 +13,20 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID;
     <link rel="icon" href="/favicon.ico" />
     <title>Miamoda Kickstarter DP-M2</title>
     <!-- Google tag (gtag.js) -->
-	<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-    <script>
+    <!-- GA4 -->
+    <script async src={"https://www.googletagmanager.com/gtag/js?id=" + GA_ID}></script>
+    <script is:inline define:vars={{ GA_ID }}>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
 
-      gtag("config", GA_ID);
+      gtag('js', new Date());
+
+      gtag('config', "${GA_ID}", {
+        debug_mode: true
+      });
+
+      console.log("GA_ID cargado:", "${GA_ID}");
     </script>
   </head>
   <body>
