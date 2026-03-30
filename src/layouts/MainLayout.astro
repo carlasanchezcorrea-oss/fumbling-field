@@ -1,37 +1,35 @@
 ---
-import '../styles/global.css'
+import "../styles/global.css";
 
-import Navbar from '../components/ui/Navbar.vue';
+import Navbar from "../components/ui/Navbar.vue";
 import FooterSection from "../features/shared/components/FooterSection.astro";
 import FooterLinks from "../features/shared/components/FooterLinks.astro";
 ---
 
+<!DOCTYPE html>
 <html lang="en">
   <head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<title>Miamoda Kickstarter DP-M2</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Miamoda Kickstarter DP-M2</title>
   </head>
   <body>
-
     <Navbar client:load />
 
     <slot />
 
     <FooterSection />
     <FooterLinks />
-
   </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
-
