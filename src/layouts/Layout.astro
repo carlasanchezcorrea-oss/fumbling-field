@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
 ---
 
 <!doctype html>
@@ -11,7 +12,7 @@ import "../styles/global.css";
     <link rel="icon" href="/favicon.ico" />
     <title>Miamoda Kickstarter DP-M2</title>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NKNFNB76FG"></script>
+	<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -19,7 +20,7 @@ import "../styles/global.css";
       }
       gtag("js", new Date());
 
-      gtag("config", "G-NKNFNB76FG");
+      gtag("config", GA_ID);
     </script>
   </head>
   <body>
