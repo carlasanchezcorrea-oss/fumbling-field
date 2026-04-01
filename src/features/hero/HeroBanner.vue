@@ -9,7 +9,7 @@ const handleSubmit = async (e) => {
   console.log("🟢 Submit funcionando");
 
   try {
-    const response = await fetch("http://localhost:8000/api/leads-save.php", {
+    const response = await fetch("https://dpm2.miaomada.co.jp/api/leads-save.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
