@@ -15,14 +15,20 @@ import "./final-cta.css";
     </div>
 
     <!-- FORM -->
-    <div class="cta-form reveal delay">
+    <form
+      class="cta-form reveal delay"
+      data-form="banner_01_form"
+      id="lead-form_01"
+    >
       <input
-        class="text-description"
         type="email"
+        name="email"
         placeholder="Enter your email"
+        class="text-description"
+        required
       />
-      <button class="text-main">Notify me</button>
-    </div>
+      <button class="text-main" id="notify-btn" type="submit">Notify me</button>
+    </form>
   </div>
 </section>
 
@@ -41,6 +47,88 @@ import "./final-cta.css";
   );
 
   elements.forEach((el) => observer.observe(el));
+
+  // FUNCTION SUBMIT LEADS
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form_01 = document.getElementById("lead-form_01");
+
+    if (!form_01) return;
+
+    form_01.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const emailInput = form_01.querySelector("input[name='email']");
+      const email = emailInput?.value;
+      const formName = form_01.dataset.form || "unknown_form";
+      const button = form_01.querySelector("button");
+
+      console.log("🟢 Submit funcionando");
+      console.log({ email: email, formName: formName, button: button });
+
+      // 🔄 Estado loading
+      button.disabled = true;
+      button.textContent = "Sending...";
+
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/leads-save.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email,
+              source: formName,
+            }),
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error("Error en la respuesta");
+        }
+        // 📊 GA4 event
+        if (typeof gtag === "function") {
+          gtag("event", "lead", {
+            method: "newsletter",
+            form_name: formName,
+            value: 1,
+            currency: "USD",
+          });
+          // Esperar 300ms para asegurar que GA4 registre el evento
+          await new Promise((resolve) => setTimeout(resolve, 300));
+        }
+        // ✅ Verificar que Meta Pixel esté cargado
+        if (typeof fbq === "function") {
+          fbq("track", "Lead", {
+            method: "newsletter",
+            form_name: formName,
+            value: 1,
+            currency: "USD",
+            content_type: "product",
+            // content_ids: ['prod_123'], // 👈 Opcional: IDs de productos
+            debug_mode: true, // 👈 Solo para desarrollo (no es parámetro oficial de Meta)
+          });
+          console.log("📡 Evento 'Lead' enviado a Meta Pixel");
+        } else {
+          console.warn(
+            "⚠️ fbq no está definido - ¿Está instalado el Meta Pixel?",
+          );
+        }
+        // 🧹 Reset
+        form_01.reset();
+        window.location.href = "/thank-you-newsletter";
+      } catch (error) {
+        console.error("🔥 Error:", error);
+      } finally {
+        // 🔁 Restaurar botón
+        button.disabled = false;
+        button.textContent = "Notify me";
+      }
+    });
+  });
 </script>
 
 <style scoped>

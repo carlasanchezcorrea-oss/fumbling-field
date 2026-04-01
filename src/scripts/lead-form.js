@@ -5,7 +5,7 @@ form.addEventListener("submit", async (e) => {
 
   const email = document.querySelector("#email").value;
 
-  await fetch("http://localhost:8000/api/leads.php", {
+  await fetch("http://localhost:8000/api/leads-save.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

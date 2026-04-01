@@ -15,14 +15,20 @@ import "./final-cta.css";
     </div>
 
     <!-- FORM -->
-    <div class="cta-form reveal delay">
+    <form
+      class="cta-form reveal delay"
+      data-form="banner_02_form"
+      id="lead-form_02"
+    >
       <input
-        class="text-description"
         type="email"
+        name="email"
         placeholder="Enter your email"
+        class="text-description"
+        required
       />
-      <button class="text-main">Notify me</button>
-    </div>
+      <button class="text-main" type="submit">Notify me</button>
+    </form>
   </div>
 </section>
 
@@ -42,6 +48,89 @@ import "./final-cta.css";
 
   elements.forEach((el) => observer.observe(el));
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form_02 = document.getElementById("lead-form_02");
+
+    if (!form_02) return;
+
+    form_02.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const emailInput = form_02.querySelector("input[name='email']");
+      const email = emailInput?.value;
+      const formName = form_02.dataset.form || "unknown_form";
+      const button = form_02.querySelector("button");
+
+      console.log("🟢 Submit funcionando");
+      console.log({ email: email, formName: formName, button: button });
+
+      // 🔄 Estado loading
+      button.disabled = true;
+      button.textContent = "Sending...";
+
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/leads-save.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email,
+              source: formName,
+            }),
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error("Error en la respuesta");
+        }
+
+        console.log("✅ Lead enviado");
+
+        // 📊 GA4 event
+        if (typeof gtag === "function") {
+          gtag("event", "lead", {
+            method: "newsletter",
+            form_name: formName,
+            value: 1,
+            currency: "USD",
+          });
+          // Esperar 300ms para asegurar que GA4 registre el evento
+          await new Promise((resolve) => setTimeout(resolve, 300));
+        }
+        // ✅ Verificar que Meta Pixel esté cargado
+        if (typeof fbq === "function") {
+          fbq("track", "Lead", {
+            method: "newsletter",
+            form_name: formName,
+            value: 1,
+            currency: "USD",
+            content_type: "product",
+            // content_ids: ['prod_123'], // 👈 Opcional: IDs de productos
+            debug_mode: true, // 👈 Solo para desarrollo (no es parámetro oficial de Meta)
+          });
+          console.log("📡 Evento 'Lead' enviado a Meta Pixel");
+        } else {
+          console.warn(
+            "⚠️ fbq no está definido - ¿Está instalado el Meta Pixel?",
+          );
+        }
+        // 🧹 Reset
+        form_02.reset();
+        window.location.href = "/thank-you-newsletter";
+      } catch (error) {
+        console.error("🔥 Error:", error);
+      } finally {
+        // 🔁 Restaurar botón
+        button.disabled = false;
+        button.textContent = "Notify me";
+      }
+    });
+  });
+</script>
 
 <style scoped>
   .cta {
@@ -58,15 +147,15 @@ import "./final-cta.css";
   /* ========================= */
 
   @media (max-width: 768px) {
-  .cta {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url("/assets/cta/bg-cta-2.png");
+    .cta {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("/assets/cta/bg-cta-2.png");
 
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
     .cta-container {
       flex-direction: column;
       align-items: flex-start;

@@ -137,18 +137,36 @@ import "./pricing.css";
 
     if (btn) {
       btn.addEventListener("click", () => {
-        console.log("🟢 Click en CTA");
-
+        // 📊 GA4 event
         if (typeof gtag === "function") {
-          gtag("event", "InitiateCheckout", {
+          gtag("event", "initiate_checkout", {
+            method: "Reserve My Spot Now",
+            form_name: 'Prccing Offer',
             currency: "USD",
             value: 1,
             debug_mode: true, // 👈 CLAVE
           });
-
           console.log("📡 Evento enviado a GA4");
         } else {
           console.warn("⚠️ gtag no está definido");
+        }
+
+        // ✅ Verificar que Meta Pixel esté cargado
+        if (typeof fbq === "function") {
+          fbq("track", "InitiateCheckout", {
+            method: "Reserve My Spot Now",
+            form_name: 'Prccing Offer',
+            value: 1,
+            currency: "USD",
+            content_type: "product",
+            // content_ids: ['prod_123'], // 👈 Opcional: IDs de productos
+            debug_mode: true, // 👈 Solo para desarrollo (no es parámetro oficial de Meta)
+          });
+          console.log("📡 Evento 'InitiateCheckout' enviado a Meta Pixel");
+        } else {
+          console.warn(
+            "⚠️ fbq no está definido - ¿Está instalado el Meta Pixel?",
+          );
         }
       });
     }
