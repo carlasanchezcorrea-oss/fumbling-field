@@ -13,10 +13,18 @@ const handleScroll = () => {
   isScrolled.value = window.scrollY > 50;
 };
 
-const scrollToSection = (id) => {
+const scrollToSection = (id, targetPage = null) => {
   isOpen.value = false;
   document.body.style.overflow = "auto";
 
+  if (targetPage && window.location.pathname !== targetPage) {
+    // Guardar la sección en sessionStorage
+    sessionStorage.setItem("scrollTo", id);
+    window.location.href = targetPage; // redirige sin hash
+    return;
+  }
+
+  // Scroll en la misma página
   const el = document.getElementById(id);
   if (el) {
     el.scrollIntoView({ behavior: "smooth" });
@@ -25,6 +33,14 @@ const scrollToSection = (id) => {
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
+  const id = sessionStorage.getItem("scrollTo");
+  if (id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+    sessionStorage.removeItem("scrollTo"); // limpiar
+  }
 });
 
 onUnmounted(() => {
@@ -38,11 +54,17 @@ onUnmounted(() => {
     <div class="container navbar">
       <!-- LOGO -->
       <div class="logo">
-        <img src="/assets/navbar/Logo.svg" :class="{ invert: isScrolled }" />
+        <a href="/">
+          <img src="/assets/navbar/Logo.svg" :class="{ invert: isScrolled }" />
+        </a>
       </div>
 
       <!-- HAMBURGER -->
-      <div class="hamburger" @click="toggleMenu" :class="{ invert: isScrolled }"> 
+      <div
+        class="hamburger"
+        @click="toggleMenu"
+        :class="{ invert: isScrolled }"
+      >
         <svg
           width="40"
           height="27"
@@ -65,20 +87,42 @@ onUnmounted(() => {
       <button class="close" @click="toggleMenu">✕</button>
 
       <ul>
-        <li @click="scrollToSection('problem')">The Problem & the solution</li>
-        <li @click="scrollToSection('benefits')">Benefits</li>
-        <li @click="scrollToSection('vip')">VIP Reservation</li>
-        <li @click="scrollToSection('quality')">Engineering of Quality</li>
-        <li @click="scrollToSection('testimonials')">Social Proof</li>
+        <li @click="scrollToSection('problem', '/')">The Problem & the solution</li>
+        <li @click="scrollToSection('benefits', '/')">Benefits</li>
+        <!-- <li @click="scrollToSection('vip', '/')">VIP Reservation</li> -->
+        <li @click="scrollToSection('quality', '/')">Engineering of Quality</li>
+        <li @click="scrollToSection('testimonials', '/')">Social Proof</li>
       </ul>
 
       <div class="divider"></div>
 
       <ul class="footer-links">
-        <li><a target="_blank" rel="noopener reference" href="/privacy-policy">Privacy Policy</a></li>
-        <li><a target="_blank" rel="noopener reference" href="/terms-and-conditions">Terms & Conditions</a></li>
-        <li><a target="_blank" rel="noopener reference" href="/refund-policy">Refund Policy</a></li>
-        <li><a target="_blank" rel="noopener reference" href="/specified-commercial-transactions">特定商取引法に基づく表記</a></li>
+        <li>
+          <a target="_blank" rel="noopener reference" href="/privacy-policy"
+            >Privacy Policy</a
+          >
+        </li>
+        <li>
+          <a
+            target="_blank"
+            rel="noopener reference"
+            href="/terms-and-conditions"
+            >Terms & Conditions</a
+          >
+        </li>
+        <li>
+          <a target="_blank" rel="noopener reference" href="/refund-policy"
+            >Refund Policy</a
+          >
+        </li>
+        <li>
+          <a
+            target="_blank"
+            rel="noopener reference"
+            href="/specified-commercial-transactions"
+            >特定商取引法に基づく表記</a
+          >
+        </li>
       </ul>
     </div>
   </div>
