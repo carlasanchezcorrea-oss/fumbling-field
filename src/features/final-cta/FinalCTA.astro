@@ -94,8 +94,8 @@ import "./final-cta.css";
           gtag("event", "lead", {
             method: "newsletter",
             form_name: formName,
-            value: 1,
-            currency: "USD",
+            value: "",
+            currency: "",
           });
           // Esperar 300ms para asegurar que GA4 registre el evento
           await new Promise((resolve) => setTimeout(resolve, 300));
@@ -105,8 +105,8 @@ import "./final-cta.css";
           fbq("track", "Lead", {
             method: "newsletter",
             form_name: formName,
-            value: 1,
-            currency: "USD",
+            value: "",
+            currency: "",
             content_type: "product",
             // content_ids: ['prod_123'], // 👈 Opcional: IDs de productos
             debug_mode: true, // 👈 Solo para desarrollo (no es parámetro oficial de Meta)

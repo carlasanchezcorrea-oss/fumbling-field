@@ -141,9 +141,10 @@ import "./pricing.css";
         if (typeof gtag === "function") {
           gtag("event", "initiate_checkout", {
             method: "Reserve My Spot Now",
-            form_name: 'Prccing Offer',
+            form_name: "Prccing Offer",
             currency: "USD",
             value: 1,
+            content_type: "product",
             debug_mode: true, // 👈 CLAVE
           });
           console.log("📡 Evento enviado a GA4");

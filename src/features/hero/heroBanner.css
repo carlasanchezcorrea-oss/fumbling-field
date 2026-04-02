@@ -29,7 +29,7 @@
   cursor: default;
 }
 /* CONTENIDO */
-.hero-content {
+.heroBanner .hero-content {
   width: 50%;
   /* max-width: 50%; */
 }
@@ -49,7 +49,7 @@
 }
 
 /* FORM */
-.form input {
+.heroBanner .form input {
   width: -webkit-fill-available;
   /* max-width: 20ch; */
   padding: 1.5rem 1.2rem;
@@ -61,18 +61,18 @@
 }
 
 /* BOTONES */
-.buttons {
+.heroBanner .buttons {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   font-family: "RalewayExtraBold";
   width: 100%;
 }
-button {
+.heroBanner button {
   width: 50%;
 }
-button.primary,
-button a {
+.heroBanner button.primary,
+.heroBanner button.secondary {
   /* width: 100%; */
   padding: 14px 20px;
   border-radius: 10px;
@@ -80,7 +80,15 @@ button a {
   cursor: pointer;
 }
 
-.secondary a {
+/* PRIMARY */
+.heroBanner .primary {
+  background: black;
+  color: white;
+  border: none;
+}
+
+/* SECONDARY */
+.heroBanner .secondary {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,26 +97,48 @@ button a {
   text-decoration: none;
   background: transparent;
   border: 0.1rem solid #000;
-}
-
-/* PRIMARY */
-.primary {
-  background: black;
-  color: white;
-  border: none;
-}
-
-/* SECONDARY */
-.secondary {
-  /* width: stretch; */
   padding: 0;
-  border: none;
   background: transparent;
 }
 
-.secondary .icon {
+.heroBanner .secondary .icon {
   margin-right: 10px;
 }
+
+.heroBanner .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.heroBanner .modal {
+  background: #000;
+  padding: 16px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+
+.heroBanner .close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .heroBanner {
@@ -124,18 +154,18 @@ button a {
   }
 
   /* FORM */
-  .form input {
+  .heroBanner .form input {
     padding: 1rem 1.2rem;
     font-size: 1.13rem;
   }
   /* BOTONES */
-  button.primary,
-  button a {
+  .heroBanner button.primary,
+  .heroBanner button.secondary {
     padding: 1rem 1.2rem;
     font-size: 1.13rem;
     margin-bottom: 1.3rem;
   }
-  .secondary .icon svg {
+  .heroBanner .secondary .icon svg {
     width: 10px;
     height: 13px;
   }

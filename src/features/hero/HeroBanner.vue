@@ -1,4 +1,39 @@
 <script setup>
+import { ref } from "vue";
+const isModalOpen = ref(false);
+
+const openModal = () => {
+  isModalOpen.value = true;
+
+  // 📊 GA4 event
+  if (typeof gtag === "function") {
+    gtag("event", "lead", {
+      method: "video_watch_demo",
+      form_name: "hero_banner_form",
+      value: "",
+      currency: "",
+      content_type: "product"
+    });
+  }
+  // ✅ Verificar que Meta Pixel esté cargado
+  if (typeof fbq === "function") {
+    fbq("track", "Lead", {
+      method: "video_watch_demo",
+      form_name: "hero_banner_form",
+      value: "",
+      currency: "",
+      content_type: "product",
+      debug_mode: true, 
+    });
+    console.log("📡 Evento 'Lead' enviado a Meta Pixel");
+  } else {
+    console.warn("⚠️ fbq no está definido - ¿Está instalado el Meta Pixel?");
+  }
+};
+const closeModal = () => {
+  isModalOpen.value = false;
+};
+
 const handleSubmit = async (e) => {
   const form = e.target;
 
@@ -9,16 +44,19 @@ const handleSubmit = async (e) => {
   console.log("🟢 Submit funcionando");
 
   try {
-    const response = await fetch("https://dpm2.miaomada.co.jp/api/leads-save.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      "https://dpm2.miaomada.co.jp/api/leads-save.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          source: formName,
+        }),
       },
-      body: JSON.stringify({
-        email,
-        source: formName,
-      }),
-    });
+    );
 
     if (response.ok) {
       // 📊 GA4 event
@@ -26,8 +64,9 @@ const handleSubmit = async (e) => {
         gtag("event", "lead", {
           method: "newsletter",
           form_name: formName,
-          value: 1,
-          currency: "USD",
+          value: "",
+          currency: "",
+          content_type: "product"
         });
         // Esperar 300ms para asegurar que GA4 registre el evento
         await new Promise((resolve) => setTimeout(resolve, 300));
@@ -37,11 +76,10 @@ const handleSubmit = async (e) => {
         fbq("track", "Lead", {
           method: "newsletter",
           form_name: formName,
-          value: 1,
-          currency: "USD",
+          value: "",
+          currency: "",
           content_type: "product",
-          // content_ids: ['prod_123'], // 👈 Opcional: IDs de productos
-          debug_mode: true, // 👈 Solo para desarrollo (no es parámetro oficial de Meta)
+          debug_mode: true,
         });
         console.log("📡 Evento 'Lead' enviado a Meta Pixel");
       } else {
@@ -86,31 +124,50 @@ const handleSubmit = async (e) => {
             <div class="buttons">
               <button class="primary text-main" type="submit">Notify me</button>
 
-              <button class="secondary text-main">
-                <a
-                  href="https://youtu.be/Mc2qe9--yA4"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div class="icon">
-                    <svg
-                      width="13"
-                      height="16"
-                      viewBox="0 0 13 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1.50896 15.994C1.3709 15.9812 1.20803 16.0125 1.07321 15.994C0.458406 15.9092 0.021572 15.2032 0 14.5727V1.45389C0.0852096 0.216094 1.17352 -0.369132 2.16691 0.247445C5.59795 2.39211 9.0937 4.43111 12.4945 6.62338C13.2798 7.37117 13.1072 8.44989 12.2734 9.04208L2.15613 15.7071L1.50896 15.9951V15.994ZM1.30619 14.5889L11.6964 7.73345C11.6964 7.69862 11.4159 7.5256 11.3685 7.49425C8.14992 5.3821 4.75664 3.5614 1.52946 1.4655L1.36659 1.39003L1.30619 1.42486V14.5901V14.5889Z"
-                        fill="black"
-                      />
-                    </svg>
-                  </div>
-                  Watch demo
-                </a>
+              <button
+                type="button"
+                class="secondary text-main"
+                @click="openModal"
+              >
+                <div class="icon">
+                  <svg
+                    width="13"
+                    height="16"
+                    viewBox="0 0 13 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.50896 15.994C1.3709 15.9812 1.20803 16.0125 1.07321 15.994C0.458406 15.9092 0.021572 15.2032 0 14.5727V1.45389C0.0852096 0.216094 1.17352 -0.369132 2.16691 0.247445C5.59795 2.39211 9.0937 4.43111 12.4945 6.62338C13.2798 7.37117 13.1072 8.44989 12.2734 9.04208L2.15613 15.7071L1.50896 15.9951V15.994ZM1.30619 14.5889L11.6964 7.73345C11.6964 7.69862 11.4159 7.5256 11.3685 7.49425C8.14992 5.3821 4.75664 3.5614 1.52946 1.4655L1.36659 1.39003L1.30619 1.42486V14.5901V14.5889Z"
+                      fill="black"
+                    />
+                  </svg>
+                </div>
+                Watch demo
               </button>
             </div>
           </form>
+          <div v-if="isModalOpen" class="modal-overlay">
+            <div class="modal">
+              <button class="close" @click="closeModal">✕</button>
+
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/Mc2qe9--yA4"
+                frameborder="0"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                "
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,25 +197,35 @@ const handleSubmit = async (e) => {
     display: none;
   }
 
-  .hero-content {
+  .heroBanner .hero-content {
     width: 100%;
     max-width: 100%;
   }
 
-  h1 {
+  .heroBanner h1 {
     font-size: 36px;
   }
 
-  .subtitle {
+  .heroBanner .subtitle {
     font-size: 14px;
   }
 
-  .buttons {
+  .heroBanner .buttons {
     flex-direction: column;
   }
 
-  button {
+  .heroBanner button {
     width: 100%;
+  }
+
+  .heroBanner .modal {
+    border-radius: 12px;
+  }
+
+  .heroBanner .close {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
   }
 }
 </style>
