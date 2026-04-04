@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 const isModalOpen = ref(false);
+const errorMessage = ref("");
+const isSubmitting = ref(false);
 
 const openModal = () => {
   isModalOpen.value = true;
@@ -12,7 +14,7 @@ const openModal = () => {
       form_name: "hero_banner_form",
       value: "",
       currency: "",
-      content_type: "product"
+      content_type: "product",
     });
   }
   // ✅ Verificar que Meta Pixel esté cargado
@@ -23,7 +25,7 @@ const openModal = () => {
       value: "",
       currency: "",
       content_type: "product",
-      debug_mode: true, 
+      debug_mode: true,
     });
     console.log("📡 Evento 'Lead' enviado a Meta Pixel");
   } else {
@@ -41,57 +43,70 @@ const handleSubmit = async (e) => {
   const email = emailInput?.value;
   const formName = form.dataset.form;
 
-  console.log("🟢 Submit funcionando");
+  if (isSubmitting.value) return; // 🛑 evita doble click
 
+  isSubmitting.value = true;
   try {
-    const response = await fetch(
-      "https://dpm2.miaomada.co.jp/api/leads-save.php",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          source: formName,
-        }),
+    const response = await fetch("https://test-dev.infinityfreeapp.com/leads-save.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({
+        email,
+        source: formName,
+      }),
+    });
 
-    if (response.ok) {
-      // 📊 GA4 event
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("Error HTTP");
+      return;
+    }
+
+    // 🔴 CASO DUPLICADO
+    if (data.type === "duplicate") {
+      console.log("⚠️ Email duplicado:", data);
+      errorMessage.value = data.message; // 👈 aquí guardas el mensaje
+      return;
+    }
+
+      console.log( data);
+      console.log( data.success);
+
+    // 🟢 SOLO SI ES NUEVO
+    if (data.success === true) {
+      console.log( data);
+
+      // 📊 GA4
       if (typeof gtag === "function") {
         gtag("event", "lead", {
           method: "newsletter",
           form_name: formName,
-          value: "",
-          currency: "",
-          content_type: "product"
+          content_type: "product",
         });
-        // Esperar 300ms para asegurar que GA4 registre el evento
+
         await new Promise((resolve) => setTimeout(resolve, 300));
       }
-      // ✅ Verificar que Meta Pixel esté cargado
+
+      // 📡 META PIXEL
       if (typeof fbq === "function") {
         fbq("track", "Lead", {
           method: "newsletter",
           form_name: formName,
-          value: "",
-          currency: "",
           content_type: "product",
-          debug_mode: true,
         });
-        console.log("📡 Evento 'Lead' enviado a Meta Pixel");
-      } else {
-        console.warn(
-          "⚠️ fbq no está definido - ¿Está instalado el Meta Pixel?",
-        );
       }
+
       emailInput.value = "";
+      errorMessage.value = "";
       window.location.href = "/thank-you-newsletter";
     }
   } catch (error) {
-    console.error("🔥 Error:", error);
+    console.error("Error:", error);
+  } finally {
+    isSubmitting.value = false; // ✅ siempre se ejecuta
   }
 };
 </script>
@@ -115,15 +130,25 @@ const handleSubmit = async (e) => {
 
         <div class="form">
           <form data-form="hero_banner_form" @submit.prevent="handleSubmit">
+            <!-- 🔴 MENSAJE DINÁMICO -->
+            <p v-if="errorMessage" class="error-message text-p">
+              {{ errorMessage }}
+            </p>
             <input
               type="email"
               placeholder="Enter your email"
               class="text-description"
               required
+              :disabled="isSubmitting"
             />
             <div class="buttons">
-              <button class="primary text-main" type="submit">Notify me</button>
-
+              <button
+                class="primary text-main"
+                type="submit"
+                :disabled="isSubmitting"
+              >
+                {{ isSubmitting ? "Sending..." : "Notify me" }}
+              </button>
               <button
                 type="button"
                 class="secondary text-main"
@@ -177,6 +202,15 @@ const handleSubmit = async (e) => {
 <style src="./heroBanner.css"></style>
 
 <style scoped>
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.error-message {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 6px;
+}
 /* ========================= */
 /* 📱 MOBILE */
 /* ========================= */

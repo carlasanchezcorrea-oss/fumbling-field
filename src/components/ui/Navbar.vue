@@ -89,7 +89,7 @@ onUnmounted(() => {
       <ul>
         <li @click="scrollToSection('problem', '/')">The Problem & the solution</li>
         <li @click="scrollToSection('benefits', '/')">Benefits</li>
-        <!-- <li @click="scrollToSection('vip', '/')">VIP Reservation</li> -->
+        <li @click="scrollToSection('vip', '/')">VIP Reservation</li>
         <li @click="scrollToSection('quality', '/')">Engineering of Quality</li>
         <li @click="scrollToSection('testimonials', '/')">Social Proof</li>
       </ul>

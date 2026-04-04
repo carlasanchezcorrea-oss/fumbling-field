@@ -4,6 +4,10 @@ import "../styles/global.css";
 import Navbar from "../components/ui/Navbar.vue";
 import FooterSection from "../features/shared/components/FooterSection.astro";
 import FooterLinks from "../features/shared/components/FooterLinks.astro";
+
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
+const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID;
+
 ---
 
 <!doctype html>
@@ -272,9 +276,3 @@ import FooterLinks from "../features/shared/components/FooterLinks.astro";
     <FooterLinks />
   </body>
 </html>
-<script>
-  <script>gtag("event", "purchase", {
-    value: 1,
-    currency: "USD",
-  });
-</script>
