@@ -57,18 +57,16 @@ const handleSubmit = async (e) => {
     //     source: formName,
     //   }),
     // });
-const response = await fetch("https://test-dev.infinityfreeapp.com/leads-save.php", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded",
-  },
-  body: new URLSearchParams({
-    email,
-    source: formName,
-  }),
-});
+  const response = await fetch("https://test-dev.infinityfreeapp.com/leads-save.php", {
+    method: "POST",
+    body: JSON.stringify(req.body),
+  });
 
-    const data = await response.json();
+  const data = await response.text();
+  res.status(200).send(data);
+}
+
+    // const data = await response.json();
 
     if (!response.ok) {
       console.error("Error HTTP");
