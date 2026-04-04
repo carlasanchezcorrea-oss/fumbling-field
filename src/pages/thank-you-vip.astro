@@ -7,7 +7,6 @@ import FooterLinks from "../features/shared/components/FooterLinks.astro";
 
 const GA_ID = import.meta.env.PUBLIC_GA_ID;
 const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID;
-
 ---
 
 <!doctype html>
@@ -269,7 +268,32 @@ const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID;
         </div>
       </div>
 
-      <p class="ty-closing text-p">The campaign launches May 12. Stay close.</p>
+      <div>
+        <div style="padding: 0 20px 50px 20px">
+          <a
+            href="https://www.facebook.com/share/g/1CKnVnz7x4/"
+            style="
+                  background: #0088ff;
+                  color: #ffffff;
+                  padding: 12px 40px;
+                  text-decoration: none;
+                  border-radius: 25px;
+                  display: inline-block;
+                  font-size: 1.8rem;
+                  line-height: 1.1;
+                  box-shadow: 2px 2px 15px 0px rgb(175, 175, 175);
+                "
+            class="text-p"
+          >
+            JOIN THE VIP FACEBOOK GROUP
+          </a>
+        </div>
+      </div>
+
+      <p class="ty-closing text-p">
+        Make sure to answer the membership question with your email to get
+        approved.
+      </p>
     </main>
 
     <FooterSection />

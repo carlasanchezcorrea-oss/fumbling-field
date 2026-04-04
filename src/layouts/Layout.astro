@@ -1,9 +1,9 @@
 ---
 import "../styles/global.css";
+import SessionInit from "../components/SessionInit.vue";
 const GA_ID = import.meta.env.PUBLIC_GA_ID;
 const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID;
 ---
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -45,6 +45,8 @@ const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID;
     <!-- End Meta Pixel Code -->    
   </head>
   <body>
+  <SessionInit client:load />
+
     <slot />
   </body>
 </html>

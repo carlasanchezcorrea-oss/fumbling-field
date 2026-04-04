@@ -5,7 +5,7 @@ form.addEventListener("submit", async (e) => {
 
   const email = document.querySelector("#email").value;
 
-  await fetch("https://test-dev.infinityfreeapp.com/leads-save.php", {
+  await fetch("https://dpm2.miaomada.co.jp/api/leads-save.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

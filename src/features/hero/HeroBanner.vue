@@ -47,7 +47,7 @@ const handleSubmit = async (e) => {
 
   isSubmitting.value = true;
   try {
-    const response = await fetch("https://test-dev.infinityfreeapp.com/leads-save.php", {
+    const response = await fetch("https://dpm2.miaomada.co.jp/api/leads-save.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,35 +72,16 @@ const handleSubmit = async (e) => {
       return;
     }
 
-      console.log( data);
-      console.log( data.success);
 
     // 🟢 SOLO SI ES NUEVO
     if (data.success === true) {
-      console.log( data);
-
-      // 📊 GA4
-      if (typeof gtag === "function") {
-        gtag("event", "lead", {
-          method: "newsletter",
-          form_name: formName,
-          content_type: "product",
-        });
-
-        await new Promise((resolve) => setTimeout(resolve, 300));
-      }
-
-      // 📡 META PIXEL
-      if (typeof fbq === "function") {
-        fbq("track", "Lead", {
-          method: "newsletter",
-          form_name: formName,
-          content_type: "product",
-        });
-      }
+      sessionStorage.setItem("registrated", true);
+      sessionStorage.setItem("email", emailInput.value);
+      sessionStorage.setItem("formName", formName);
 
       emailInput.value = "";
       errorMessage.value = "";
+
       window.location.href = "/thank-you-newsletter";
     }
   } catch (error) {
