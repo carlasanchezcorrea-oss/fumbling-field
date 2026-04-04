@@ -64,7 +64,6 @@ const handleSubmit = async (e) => {
 
   const data = await response.text();
   res.status(200).send(data);
-}
 
     // const data = await response.json();
 
