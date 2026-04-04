@@ -47,16 +47,26 @@ const handleSubmit = async (e) => {
 
   isSubmitting.value = true;
   try {
-    const response = await fetch("https://test-dev.infinityfreeapp.com/leads-save.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        source: formName,
-      }),
-    });
+    // const response = await fetch("https://test-dev.infinityfreeapp.com/leads-save.php", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     email,
+    //     source: formName,
+    //   }),
+    // });
+const response = await fetch("https://test-dev.infinityfreeapp.com/leads-save.php", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body: new URLSearchParams({
+    email,
+    source: formName,
+  }),
+});
 
     const data = await response.json();
 
