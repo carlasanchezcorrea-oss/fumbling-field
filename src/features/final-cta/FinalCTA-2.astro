@@ -15,7 +15,7 @@ import "./final-cta.css";
     </div>
 
     <!-- FORM -->
-    <div>
+    <div class="container-form">
       <div id="error-message-container-02"></div>
       <form
         class="cta-form reveal delay"
@@ -59,7 +59,7 @@ import "./final-cta.css";
     const emailInput = form_02.querySelector("input[name='email']");
     const button = form_02.querySelector("button[type='submit']");
 
-    // 🔴 contenedor de error dinámico
+    // 🔴 Dynamic error container
     let errorEl = form_02.querySelector(".error-message");
     let errorElcontainer = document.querySelector(
       "#error-message-container-02",
@@ -79,10 +79,10 @@ import "./final-cta.css";
 
       const email = emailInput?.value;
       const formName = form_02.dataset.form || "unknown_form";
+      const eventId = "lead_" + Date.now();
 
       if (!email) return;
 
-      // 🧼 limpiar mensaje previo
       errorEl.textContent = "";
 
       // 🔄 loading state
@@ -100,32 +100,28 @@ import "./final-cta.css";
             body: JSON.stringify({
               email,
               source: formName,
+              event_id: eventId,
             }),
           },
         );
 
-        const data = await response.json(); // 👈 CLAVE
+        const data = await response.json();
 
         if (!response.ok) {
           throw new Error("Error en la respuesta");
         }
 
-        // 🔴 DUPLICADO
+        // 🔴 EMAIL DUPLICATE
         if (data.type === "duplicate") {
-          console.log("⚠️ Email duplicado:", data);
-
-          errorEl.textContent = data.message; // 👈 mostrar mensaje
-          return; // ⛔ cortar flujo
+          errorEl.textContent = data.message;
+          return;
         }
 
-        // 🟢 SOLO SI ES NUEVO
+        // 🟢 ONLY IF NEW
         if (data.success === true) {
           sessionStorage.setItem("registrated", true);
           sessionStorage.setItem("email", emailInput?.value);
           sessionStorage.setItem("formName", formName);
-
-          // emailInput?.value = "";
-          // errorEl.value = "";
           // 🧹 reset + redirect
           form_02.reset();
 
@@ -135,7 +131,6 @@ import "./final-cta.css";
         console.error("🔥 Error:", error);
         errorEl.textContent = "Ocurrió un error. Inténtalo nuevamente.";
       } finally {
-        // 🔁 restaurar botón
         button.disabled = false;
         button.textContent = "Notify me";
       }
@@ -167,14 +162,19 @@ import "./final-cta.css";
       background-position: center center;
       background-repeat: no-repeat;
     }
+    .container-form {
+      width: 100%;
+    }
     .cta-container {
       flex-direction: column;
       align-items: flex-start;
     }
-    .cta-container .cta-text,
-    .cta-container .cta-form {
+
+    .cta-container .cta-text {
       width: 100%;
     }
+
+    .cta-container .cta-text,
     .cta-text h3 {
       font-size: 36px;
     }

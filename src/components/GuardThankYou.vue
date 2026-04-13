@@ -7,7 +7,6 @@ const destroySession = () => {
   sessionStorage.removeItem("registrated");
   sessionStorage.removeItem("email");
   sessionStorage.removeItem("formName");
-  console.log("🧹 Sesión eliminada");
 };
 
 const isReload = () => {
@@ -23,21 +22,20 @@ onMounted(() => {
   const registrated = sessionStorage.getItem("registrated");
   const formName = sessionStorage.getItem("formName");
 
-  console.log({ email, registrated });
-
-  // 🔐 1. VALIDACIÓN DE ACCESO (PRIMERO)
+  // 🔐 1. EMAIL ACCESS VALIDATION
   if (!email || registrated !== "true") {
-    console.warn("⛔ Acceso inválido, redirigiendo...");
+    console.warn("⛔ Invalid access, redirecting...");
     window.location.href = "/";
-    return; // 🔥 importante cortar ejecución
+    return;
   }
 
-  // 📊 2. TRACKING (solo si es válido)
+  // 📊 2. TRACKING
   if (typeof gtag === "function") {
     gtag("event", "lead", {
       method: "newsletter",
       form_name: formName,
       content_type: "product",
+      content_name: "newsletter_signup",
     });
   }
 
@@ -46,20 +44,21 @@ onMounted(() => {
       method: "newsletter",
       form_name: formName,
       content_type: "product",
+      content_name: "newsletter_signup",
     });
   }
 
-  // 🔄 3. SI RECARGA → destruir sesión
+  // 🔄 3. IF PAGE RELOADS → destroy session
   if (isReload()) {
     destroySession();
   }
 
-  // 🧹 4. LIMPIEZA AL SALIR (opcional)
+  // 🧹 4. CLEANUP ON EXIT (optional)
   window.addEventListener("beforeunload", destroySession);
 });
 
-// 🧼 cleanup real (buena práctica)
-onBeforeUnmount(() => {
-  window.removeEventListener("beforeunload", destroySession);
-});
+  // 🧼 cleanup
+  onBeforeUnmount(() => {
+    window.removeEventListener("beforeunload", destroySession);
+  });
 </script>

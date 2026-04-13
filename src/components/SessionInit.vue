@@ -17,33 +17,19 @@ function isReload() {
   if (performance.getEntriesByType("navigation").length > 0) {
     return performance.getEntriesByType("navigation")[0].type === "reload";
   }
-  return performance.navigation.type === 1; // fallback viejo
+  return performance.navigation.type === 1;
 }
 
 onMounted(() => {
   let token = sessionStorage.getItem("session_token");
 
-  // 🔥 SI ES RELOAD → SIEMPRE NUEVO TOKEN
-  //   if (isReload()) {
-  //     token = generateSessionToken();
-  //     sessionStorage.setItem("session_token", token);
-  //     sessionStorage.setItem("registrated", "false");
-  //     sessionStorage.setItem("email", "");
-  //     console.log("🔄 Nuevo token por reload:", token);
-  //     return;
-  //   }
-
-  // 🆕 SI NO EXISTE → CREAR
+  // 🆕 IF NOT EXISTS → CREATE
   if (!token) {
     token = generateSessionToken();
     sessionStorage.setItem("session_token", token);
     sessionStorage.setItem("registrated", false);
     sessionStorage.setItem("email", "");
     sessionStorage.setItem("formName", "");
-
-    console.log("🆕 Nueva sesión:", token);
-  } else {
-    console.log("♻️ Sesión existente:", token);
   }
 });
 </script>

@@ -9,27 +9,28 @@ const openModal = () => {
 
   // 📊 GA4 event
   if (typeof gtag === "function") {
-    gtag("event", "lead", {
+    gtag("event", "view_content", {
       method: "video_watch_demo",
       form_name: "hero_banner_form",
       value: "",
       currency: "",
-      content_type: "product",
+      content_type: "video",
+      content_name: "demo_video",
     });
   }
-  // ✅ Verificar que Meta Pixel esté cargado
+  // ✅ Check if Meta Pixel is loaded
   if (typeof fbq === "function") {
-    fbq("track", "Lead", {
-      method: "video_watch_demo",
+    fbq("track", "ViewContent", {
       form_name: "hero_banner_form",
       value: "",
       currency: "",
-      content_type: "product",
+      content_type: "video",
+      content_name: "demo_video",
+
       debug_mode: true,
     });
-    console.log("📡 Evento 'Lead' enviado a Meta Pixel");
   } else {
-    console.warn("⚠️ fbq no está definido - ¿Está instalado el Meta Pixel?");
+    console.warn("⚠️ fbq is not defined - Is the Meta Pixel installed?");
   }
 };
 const closeModal = () => {
@@ -42,21 +43,26 @@ const handleSubmit = async (e) => {
   const emailInput = form.querySelector("input[type='email']");
   const email = emailInput?.value;
   const formName = form.dataset.form;
+  const eventId = "lead_" + Date.now();
 
-  if (isSubmitting.value) return; // 🛑 evita doble click
+  if (isSubmitting.value) return;
 
   isSubmitting.value = true;
   try {
-    const response = await fetch("https://dpm2.miaomada.co.jp/api/leads-save.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      "https://dpm2.miaomada.co.jp/api/leads-save.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          source: formName,
+          event_id: eventId,
+        }),
       },
-      body: JSON.stringify({
-        email,
-        source: formName,
-      }),
-    });
+    );
 
     const data = await response.json();
 
@@ -65,15 +71,13 @@ const handleSubmit = async (e) => {
       return;
     }
 
-    // 🔴 CASO DUPLICADO
+    // 🔴 EMAIL DUPLICATE
     if (data.type === "duplicate") {
-      console.log("⚠️ Email duplicado:", data);
-      errorMessage.value = data.message; // 👈 aquí guardas el mensaje
+      errorMessage.value = data.message;
       return;
     }
 
-
-    // 🟢 SOLO SI ES NUEVO
+    // 🟢 ONLY IF NEW
     if (data.success === true) {
       sessionStorage.setItem("registrated", true);
       sessionStorage.setItem("email", emailInput.value);
@@ -87,7 +91,7 @@ const handleSubmit = async (e) => {
   } catch (error) {
     console.error("Error:", error);
   } finally {
-    isSubmitting.value = false; // ✅ siempre se ejecuta
+    isSubmitting.value = false;
   }
 };
 </script>

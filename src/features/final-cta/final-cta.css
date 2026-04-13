@@ -64,7 +64,9 @@
   color: white;
   cursor: pointer;
 }
-
+.cta-container .cta-form, .container-form {
+  width: 90%;
+}
 /* ========================= */
 /* ✨ ANIMACIÓN */
 /* ========================= */
@@ -107,5 +109,9 @@
 
   .cta-text p {
     font-size: 1.6rem;
+  }
+
+  .cta-form input {
+    width: 100%;
   }
 }

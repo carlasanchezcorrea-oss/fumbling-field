@@ -5,7 +5,7 @@
       <div
         class="option2 active"
         style="
-          --optionBackground: url('/assets/accordionShowCase/slide-1-bg.jpg');
+          --optionBackground: url(&quot;/assets/accordionShowCase/slide-1-bg.jpg&quot;);
         "
       >
         <div class="shadow"></div>
@@ -21,7 +21,7 @@
       <div
         class="option2"
         style="
-          --optionBackground: url('/assets/accordionShowCase/slide-2-bg.jpg');
+          --optionBackground: url(&quot;/assets/accordionShowCase/slide-2-bg.jpg&quot;);
         "
       >
         <div class="shadow"></div>
@@ -38,7 +38,7 @@
       <div
         class="option2"
         style="
-          --optionBackground: url('/assets/accordionShowCase/slide-3-bg.jpg');
+          --optionBackground: url(&quot;/assets/accordionShowCase/slide-3-bg.jpg&quot;);
         "
       >
         <div class="shadow"></div>
@@ -61,25 +61,25 @@ let currentIndex = 0;
 let interval;
 let options = [];
 
-// función que activa un índice
+// 🎯 Set active slide by index
 function setActive(index) {
   options.forEach((el) => el.classList.remove("active"));
   options[index].classList.add("active");
   currentIndex = index;
 }
 
-// función para ir al siguiente
+// ➡️ Advance to next slide
 function nextOption() {
   let nextIndex = (currentIndex + 1) % options.length;
   setActive(nextIndex);
 }
 
-// iniciar autoplay
+// ▶️ Initialize autoplay
 function startAutoPlay() {
   interval = setInterval(nextOption, 6000);
 }
 
-// reiniciar autoplay
+// 🔄 Restart autoplay timer
 function resetAutoPlay() {
   clearInterval(interval);
   startAutoPlay();
@@ -88,7 +88,7 @@ function resetAutoPlay() {
 onMounted(() => {
   options = document.querySelectorAll(".option2");
 
-  // click manual
+  // 👆 On manual user interaction
   options.forEach((option, index) => {
     option.addEventListener("click", () => {
       setActive(index);
@@ -99,8 +99,8 @@ onMounted(() => {
   // startAutoPlay();
 });
 
-// 🔥 limpiar para evitar memory leaks
-onBeforeUnmount(() => {
-  clearInterval(interval);
-});
+  // 🔥 Cleanup listeners & timers to prevent memory leaks
+  onBeforeUnmount(() => {
+    clearInterval(interval);
+  });
 </script>

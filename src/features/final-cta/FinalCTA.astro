@@ -15,7 +15,7 @@ import "./final-cta.css";
     </div>
 
     <!-- FORM -->
-    <div>
+    <div class="container-form">
       <div id="error-message-container"></div>
       <form
         class="cta-form reveal delay"
@@ -63,7 +63,7 @@ import "./final-cta.css";
     const emailInput = form_01.querySelector("input[name='email']");
     const button = form_01.querySelector("button[type='submit']");
 
-    // 🔴 contenedor de error dinámico
+    // 🔴 Dynamic error container
     let errorEl = form_01.querySelector(".error-message");
     let errorElcontainer = document.querySelector("#error-message-container");
 
@@ -81,10 +81,10 @@ import "./final-cta.css";
 
       const email = emailInput?.value;
       const formName = form_01.dataset.form || "unknown_form";
+      const eventId = "lead_" + Date.now();
 
       if (!email) return;
 
-      // 🧼 limpiar mensaje previo
       errorEl.textContent = "";
 
       // 🔄 loading state
@@ -102,32 +102,28 @@ import "./final-cta.css";
             body: JSON.stringify({
               email,
               source: formName,
+              event_id: eventId,
             }),
           },
         );
 
-        const data = await response.json(); // 👈 CLAVE
+        const data = await response.json();E
 
         if (!response.ok) {
           throw new Error("Error en la respuesta");
         }
 
-        // 🔴 DUPLICADO
+        // 🔴 EMAIL DUPLICATE
         if (data.type === "duplicate") {
-          console.log("⚠️ Email duplicado:", data);
-
-          errorEl.textContent = data.message; // 👈 mostrar mensaje
-          return; // ⛔ cortar flujo
+          errorEl.textContent = data.message; 
+          return; 
         }
 
-        // 🟢 SOLO SI ES NUEVO
+        // 🟢 ONLY IF NEW
         if (data.success === true) {
           sessionStorage.setItem("registrated", true);
           sessionStorage.setItem("email", emailInput?.value);
           sessionStorage.setItem("formName", formName);
-
-          // emailInput?.value = "";
-          // errorEl.value = "";
           // 🧹 reset + redirect
           form_01.reset();
 
@@ -137,7 +133,6 @@ import "./final-cta.css";
         console.error("🔥 Error:", error);
         errorEl.textContent = "Ocurrió un error. Inténtalo nuevamente.";
       } finally {
-        // 🔁 restaurar botón
         button.disabled = false;
         button.textContent = "Notify me";
       }
@@ -151,6 +146,9 @@ import "./final-cta.css";
   /* ========================= */
 
   @media (max-width: 768px) {
+    .container-form {
+      width: 100%;
+    }
     .cta {
     }
     .cta-container {

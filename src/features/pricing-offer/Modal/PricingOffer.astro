@@ -2,7 +2,7 @@
 import "./pricing.css";
 ---
 
-<section class="promo-section container-global" id="vip">
+<section class="promo-section" id="vip">
   <div class="background-overlay"></div>
 
   <div class="promo-section_container">
@@ -107,7 +107,7 @@ import "./pricing.css";
         <div>
           <p>Only</p>
         </div>
-        <p class="number" id="count-number-register">50</p>
+        <p class="number" id="count-number-registe-modal">50</p>
 
         <div>
           <p>spots left!</p>
@@ -140,7 +140,7 @@ import "./pricing.css";
       fetch("https://dpm2.miaomada.co.jp/api/get-stripe-count.php")
         .then((res) => res.json())
         .then((data) => {
-          const el = document.getElementById("count-number-register");
+          const el = document.getElementById("count-number-registe-modal");
           if (el) {
             const math = parseInt("50") - parseInt(data.total);
             el.textContent = math.toString();
@@ -176,7 +176,7 @@ import "./pricing.css";
               currency: "USD",
               content_type: "product",
               content_name: "link_payment",
-              debug_mode: true, 
+              debug_mode: true,
             });
           } else {
             console.warn(
@@ -188,49 +188,4 @@ import "./pricing.css";
     });
   </script>
 
-  <style scoped>
-    /* ========================= */
-    /* 📱 MOBILE */
-    /* ========================= */
-    /* Ajustes específicos para Mobile 390px */
-    @media (max-width: 480px) {
-      .promo-section {
-        background-size: cover;
-        background-size: 222% 158%;
-        background-position: top center;
-        background-position-y: -42rem;
-        background-position-x: -33rem;
-      }
-      .promo-section .header-content .subtitle {
-        max-width: 100%;
-      }
-      .promo-section .header-content .text-p.subtitle {
-        font-size: 1.6rem;
-      }
-      .promo-section .header-content,
-      .promo-section_container .card {
-        /* width: 100%;
-      min-width: 100%; */
-        width: auto;
-      }
-      .promo-section_container {
-        flex-direction: column;
-      }
-      .main-title {
-        font-size: 2.2rem;
-      }
-
-      .promo-section_container .card {
-        padding: 2rem 1.5rem;
-        border-radius: 20px;
-      }
-
-      .price-tag .text-p {
-        font-size: 96px;
-      }
-      .price-tag .text-p span {
-        font-size: 128px;
-      }
-    }
-  </style>
 </section>

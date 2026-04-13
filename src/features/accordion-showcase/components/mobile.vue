@@ -105,12 +105,11 @@ onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Determinar qué elemento es
         if (entry.target === headerRef.value) {
           isVisible.value.header = true;
         }
         if (entry.target === paginationEl.value) {
-          // Pequeño delay para el swiper
+          //Delay for Swiper
           setTimeout(() => {
             isVisible.value.swiper = true;
           }, 200);
@@ -120,7 +119,6 @@ onMounted(() => {
     });
   }, observerOptions);
 
-  // Observar elementos
   if (headerRef.value) observer.observe(headerRef.value);
   if (paginationEl.value) observer.observe(paginationEl.value);
 

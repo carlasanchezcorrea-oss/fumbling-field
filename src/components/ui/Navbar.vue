@@ -18,9 +18,9 @@ const scrollToSection = (id, targetPage = null) => {
   document.body.style.overflow = "auto";
 
   if (targetPage && window.location.pathname !== targetPage) {
-    // Guardar la sección en sessionStorage
+    // Scroll within the same page
     sessionStorage.setItem("scrollTo", id);
-    window.location.href = targetPage; // redirige sin hash
+    window.location.href = targetPage;
     return;
   }
 
@@ -39,7 +39,7 @@ onMounted(() => {
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
-    sessionStorage.removeItem("scrollTo"); // limpiar
+    sessionStorage.removeItem("scrollTo");
   }
 });
 

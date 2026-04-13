@@ -1,0 +1,125 @@
+---
+import SectionVip from "./PricingOffer.astro";
+---
+
+<div id="promo-modal" class="modal-overlay-pricing-vip">
+  <div class="modal-content">
+    <button class="modal-close" id="close-modal">✕</button>
+
+    <!-- TU COMPONENTE -->
+    <SectionVip client:load />
+  </div>
+</div>
+
+<style>
+  /* ========================= */
+  /* MODAL BASE */
+  /* ========================= */
+  .modal-overlay-pricing-vip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.4s ease,
+      visibility 0.4s ease;
+  }
+
+  /* Estado activo */
+  .modal-overlay-pricing-vip.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* CONTENIDO */
+  .modal-overlay-pricing-vip .modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+    border-radius: 20px;
+
+    /* 👇 estado inicial */
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  /* 👇 cuando abre */
+  .modal-overlay-pricing-vip.active .modal-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  /* BOTÓN CERRAR */
+  .modal-overlay-pricing-vip .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #000;
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  /* ========================= */
+  /* AJUSTES PARA TU SECTION */
+  /* ========================= */
+
+  /* Mobile fix */
+  @media (max-width: 768px) {
+    .modal-overlay-pricing-vip .modal-content {
+      width: 95%;
+      max-height: 85vh;
+    }
+  }
+
+  /* ========================= */
+  /* 🖥️ DESKTOP(1440+) */
+  /* ========================= */
+  @media (min-width: 1440px) {
+    .modal-overlay-pricing-vip .modal-content {
+      max-width: 1224px;
+      max-height: 85vh;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("promo-modal");
+    const closeBtn = document.getElementById("close-modal");
+
+    // ⏱️ abrir después de 5 segundos
+    setTimeout(() => {
+      modal.classList.add("active");
+    }, 5000);
+
+    // ❌ cerrar modal
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    // cerrar haciendo click fuera
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+  });
+</script>

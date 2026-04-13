@@ -53,13 +53,13 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-// Configuración de hotspots con posiciones responsivas (en porcentajes)
+// Hotspot configuration with responsive positions (in percentages)
 const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
     isOpen: true,
-    position: { top: "25%", left: "87%" }, // Arriba derecha - contenedor transparente
+    position: { top: "25%", left: "87%" }, // Top right - transparent container
     title: "Hopper",
     subtitle: "High-Capacity Storage. ",
     description:
@@ -83,7 +83,7 @@ const hotspots = ref([
     isActive: true,
     hasBeenClicked: false,
     isOpen: false,
-    position: { top: "43%", left: "35%" }, // Abajo izquierda - contenedor transparente
+    position: { top: "43%", left: "35%" }, // Bottom left - transparent container
     title: "Agitator",
     subtitle: "Smooth Flow System.",
     description: "No clumps. No sticking. Just a clean, uninterrupted flow.",
@@ -107,7 +107,7 @@ const hotspots = ref([
     isActive: true,
     hasBeenClicked: false,
     isOpen: false,
-    position: { top: "60%", left: "42%" }, // Centro izquierda - base negra
+    position: { top: "60%", left: "42%" }, // Center left - black base
     title: "Nozzles",
     subtitle: "Controlled Pour.",
     description:
@@ -140,7 +140,7 @@ const hotspots = ref([
     isActive: true,
     hasBeenClicked: false,
     isOpen: false,
-    position: { top: "52%", left: "75%" }, // Centro derecha - base negra
+    position: { top: "52%", left: "75%" }, // Center right - black base
     title: "Measuring Unit",
     subtitle: "Precision Core.",
     description:
@@ -164,7 +164,7 @@ const hotspots = ref([
     isActive: true,
     hasBeenClicked: false,
     isOpen: false,
-    position: { top: "77%", left: "50%" }, // Abajo centro - base negra
+    position: { top: "77%", left: "50%" }, // Bottom center - black base
     boxText: { class: "" },
     line: { class: "" },
     title: "Heavy-Duty Stand",
@@ -190,22 +190,18 @@ const hotspots = ref([
 const toggleHotspotMobile = (index) => {
   const current = hotspots.value[index];
 
-  // 👉 si ya está abierto, lo cerramos
+  // 👉 If already open, close it
   if (current.isOpen) {
     current.isOpen = false;
     return;
   }
 
-  // 👉 si no, cerramos todos y abrimos el clickeado
+  // 👉 Otherwise, close all and open the clicked one
   hotspots.value.forEach((h, i) => {
     h.isOpen = i === index;
   });
 };
 
-// Iniciar animación de pulso al montar
-onMounted(() => {
-  // Las animaciones CSS se activan automáticamente
-});
 </script>
 
 <style scoped>

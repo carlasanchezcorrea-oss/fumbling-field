@@ -19,11 +19,14 @@ import FinalCTA2 from "../features/final-cta/FinalCTA-2.astro";
 import FooterSection from "../features/shared/components/FooterSection.astro";
 import FooterLinks from "../features/shared/components/FooterLinks.astro";
 
+import ModalPricingOfferVip from "../features/pricing-offer/Modal/ModalPricingOfferVip.astro";
+
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
+  <ModalPricingOfferVip client:load />
   <Navbar client:load />
   <!-- <Welcome /> -->
   <!-- Form -->

@@ -62,7 +62,7 @@ const hotspots = ref([
     isActive: true,
     hasBeenClicked: false,
     isOpen: true,
-    position: { top: "42%", left: "58%" }, // Arriba derecha - contenedor transparente
+    position: { top: "42%", left: "58%" }, // Top right - transparent container
     title: "Hopper",
     subtitle: "High-Capacity Storage. ",
     description:
@@ -73,7 +73,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "58%", left: "41%" }, // Abajo izquierda - contenedor transparente
+    position: { top: "58%", left: "41%" }, // Bottom left - transparent container
     title: "Agitator",
     subtitle: "Smooth Flow System.",
     description: "No clumps. No sticking. Just a clean, uninterrupted flow.",
@@ -84,7 +84,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "70%", left: "45%" }, // Centro izquierda - base negra
+    position: { top: "70%", left: "45%" }, // Center left - black base
     title: "Nozzles",
     subtitle: "Controlled Pour.",
     description:
@@ -104,7 +104,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "65%", left: "55%" }, // Centro derecha - base negra
+    position: { top: "65%", left: "55%" }, // Center right - black base
     title: "Measuring Unit",
     subtitle: "Precision Core.",
     description:
@@ -115,7 +115,7 @@ const hotspots = ref([
   {
     isActive: true,
     hasBeenClicked: false,
-    position: { top: "82%", left: "50%" }, // Abajo centro - base negra
+    position: { top: "82%", left: "50%" }, // Bottom center - black base
     boxText: { class: "" },
     line: { class: "" },
     title: "Heavy-Duty Stand",
@@ -137,13 +137,8 @@ const toggleHotspot = (index) => {
   hotspot.isActive = !hotspot.isActive;
   hotspot.hasBeenClicked = true;
 
-  console.log(hotspot.isOpen ? "open" : "close");
 };
 
-// Iniciar animación de pulso al montar
-onMounted(() => {
-  // Las animaciones CSS se activan automáticamente
-});
 </script>
 
 <style scoped>

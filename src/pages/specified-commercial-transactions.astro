@@ -266,13 +266,13 @@ import Layout from "../layouts/MainLayout.astro";
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
-          observer.unobserve(entry.target); // 👈 evita reanimar
+          observer.unobserve(entry.target);
         }
       });
     },
     {
       threshold: 0.12,
-      rootMargin: "0px 0px -50px 0px", // 👈 activa antes (más smooth)
+      rootMargin: "0px 0px -50px 0px",
     },
   );
 
