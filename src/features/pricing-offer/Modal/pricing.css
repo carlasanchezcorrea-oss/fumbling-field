@@ -21,9 +21,8 @@
 .modal-overlay-pricing-vip .promo-section {
   position: relative;
   /* width: 100%; */
-  background-image: url("/assets/pricingOffer/bg.jpg");
-  background-size: cover;
-  background-position: center;
+    background-image: none;
+    background-color: rgb(0, 0, 0, 0.3);
   font-family: var(--font-family);
   display: flex;
   align-items: center;
