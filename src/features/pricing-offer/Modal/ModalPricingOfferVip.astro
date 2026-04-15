@@ -2,9 +2,9 @@
 import SectionVip from "./PricingOffer.astro";
 ---
 
-<div id="promo-modal" class="modal-overlay-pricing-vip">
+<div id="promo-vip-modal" class="modal-overlay-pricing-vip">
   <div class="modal-content">
-    <button class="modal-close" id="close-modal">✕</button>
+    <button class="modal-close" id="close-vip-modal">✕</button>
 
     <!-- TU COMPONENTE -->
     <SectionVip client:load />
@@ -109,25 +109,120 @@ import SectionVip from "./PricingOffer.astro";
 </style>
 
 <script>
+  // ==========================
+  // 🔒 CONFIG GLOBAL
+  // ==========================
+  let wasPopupShown = false;
+
+  // ==========================
+  // 🚀 FUNCIÓN CENTRAL
+  // ==========================
+  function showVipPopup() {
+    if (wasPopupShown) return; // evita duplicados
+
+    wasPopupShown = true;
+
+    const modal = document.getElementById("promo-vip-modal");
+
+    if (!modal) return;
+
+    // mostrar modal
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    // guardar persistencia
+    localStorage.setItem("vip_offer_closed", "true");
+
+    // limpiar listeners (opcional pero PRO)
+    removeEventListeners();
+  }
+
+  // ==========================
+  // ❌ CERRAR MODAL
+  // ==========================
+  function closeVipPopup() {
+    const modal = document.getElementById("promo-vip-modal");
+
+    if (!modal) return;
+
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+
+    localStorage.setItem("vip_offer_closed", "true");
+  }
+
+  // ==========================
+  // 📉 SCROLL 25%
+  // ==========================
+  function handleScroll() {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    if (scrollPercent >= 25) {
+      showVipPopup();
+    }
+  }
+
+  // ==========================
+  // 🚪 EXIT INTENT (DESKTOP)
+  // ==========================
+  function handleExitIntent(e) {
+    if (e.clientY <= 0) {
+      showVipPopup();
+    }
+  }
+
+  // ==========================
+  // 🧹 LIMPIAR EVENTOS (PRO)
+  // ==========================
+  function removeEventListeners() {
+    window.removeEventListener("scroll", handleScroll);
+    document.removeEventListener("mouseleave", handleExitIntent);
+  }
+  // ==========================
+  // 🟢 INIT
+  // ==========================
   document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("promo-modal");
-    const closeBtn = document.getElementById("close-modal");
+    // 🔒 SI YA INTERACTUÓ → NO HACER NADA
+    if (localStorage.getItem("vip_offer_closed")) return;
 
-    // ⏱️ abrir después de 5 segundos
-    setTimeout(() => {
-      modal.classList.add("active");
-    }, 5000);
+    const closeBtn = document.getElementById("close-vip-modal");
+    const modal = document.getElementById("promo-vip-modal");
 
-    // ❌ cerrar modal
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("active");
-    });
+    // ==========================
+    // ⏱️ TIMEOUT 15s
+    // ==========================
+    const timeout = setTimeout(() => {
+      showVipPopup();
+    }, 15000);
 
-    // cerrar haciendo click fuera
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.classList.remove("active");
-      }
-    });
+    // ==========================
+    // 🎯 EVENTOS
+    // ==========================
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mouseleave", handleExitIntent);
+
+    // ==========================
+    // ❌ CERRAR
+    // ==========================
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        closeVipPopup();
+        clearTimeout(timeout);
+      });
+    }
+
+    // click fuera del modal
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeVipPopup();
+          clearTimeout(timeout);
+        }
+      });
+    }
   });
 </script>

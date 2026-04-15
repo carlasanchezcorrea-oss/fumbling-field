@@ -118,7 +118,7 @@ import "./pricing.css";
       <a
         rel="noopener noreferrer"
         class="text-main cta-button"
-        id="cta-checkout"
+        id="cta-checkout-modal"
         href="https://buy.stripe.com/cNi6oAdeLcCofJ7bnkbV600"
         target="_blank"
       >
@@ -140,19 +140,19 @@ import "./pricing.css";
       fetch("https://dpm2.miaomada.co.jp/api/get-stripe-count.php")
         .then((res) => res.json())
         .then((data) => {
-          const el = document.getElementById("count-number-registe-modal");
-          if (el) {
-            const math = parseInt("50") - parseInt(data.total);
-            el.textContent = math.toString();
+          const textCounterVipModal = document.getElementById("count-number-registe-modal");
+          if (textCounterVipModal) {
+            const mathCounterVipModal = parseInt("50") - parseInt(data.total);
+            textCounterVipModal.textContent = mathCounterVipModal.toString();
           }
         })
         .catch((err) => console.error("Error:", err));
 
       //
-      const btn = document.getElementById("cta-checkout");
+      const btnVipModal = document.getElementById("cta-checkout-modal");
 
-      if (btn) {
-        btn.addEventListener("click", () => {
+      if (btnVipModal) {
+        btnVipModal.addEventListener("click", () => {
           // 📊 GA4 event
           if (typeof gtag === "function") {
             gtag("event", "initiate_checkout", {
