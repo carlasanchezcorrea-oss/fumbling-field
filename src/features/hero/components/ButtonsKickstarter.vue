@@ -83,7 +83,7 @@ const { isModalOpen, openModal, closeModal, kickstarterRedirect } =
     flex-direction: column;
   }
 
-  .heroBanner button {
+  .heroBanner form button {
     width: 100%;
   }
 }
