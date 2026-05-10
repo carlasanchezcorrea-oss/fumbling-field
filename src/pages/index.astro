@@ -1,11 +1,8 @@
 ---
-// import Welcome from '../components/Welcome.astro';
 import Layout from "../layouts/Layout.astro";
 
 import Navbar from "../components/ui/Navbar.vue";
-
-import FormTest from "../features/hero/HeroSection.astro";
-import HeroSection from "../features/hero/HeroBanner.vue";
+import HeroBanner from "../features/hero/HeroBanner.vue";
 import ProductIntro from "../features/product-intro/ProductIntro.astro";
 import FeatureGrid from "../features/feature-showcase/FeatureGrid.astro";
 import AccordionShowcase from "../features/accordion-showcase/AccordationShowcase.vue";
@@ -13,8 +10,8 @@ import ProductHotspots from "../features/product-hotspots/ProductHotspots.vue";
 import PricingOffer from "../features/pricing-offer/PricingOffer.astro";
 import Testimonials from "../features/testimonials/Testimonials.vue";
 import FinalCTA from "../features/final-cta/FinalCTA.astro";
-import FinalCTA2 from "../features/final-cta/FinalCTA-2.astro";
-
+// import FinalCTA2 from "../features/final-cta/FinalCTA-2.astro";
+import FinalCTA2 from "../features/final-cta/FinalCTA-2-v2.astro";
 
 import FooterSection from "../features/shared/components/FooterSection.astro";
 import FooterLinks from "../features/shared/components/FooterLinks.astro";
@@ -26,11 +23,9 @@ import ModalPricingOfferVip from "../features/pricing-offer/Modal/ModalPricingOf
 ---
 
 <Layout>
-  <ModalPricingOfferVip client:load />
+  <!-- <ModalPricingOfferVip client:load /> -->
   <Navbar client:load />
-  <!-- <Welcome /> -->
-  <!-- Form -->
-  <HeroSection client:load />
+  <HeroBanner client:load />
 
   <ProductIntro client:load  />
 
@@ -40,7 +35,7 @@ import ModalPricingOfferVip from "../features/pricing-offer/Modal/ModalPricingOf
   <!-- Accordation ShowCase interactivos -->
   <AccordionShowcase client:load />
   
-  <PricingOffer />
+  <!-- <PricingOffer /> -->
   <ProductHotspots client:load />
   
   <Testimonials client:load />

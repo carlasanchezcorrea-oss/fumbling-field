@@ -1,0 +1,51 @@
+<!-- FORM -->
+<div class="container-form">
+  <form
+    class="cta-form reveal delay"
+    data-form="banner_01_form"
+    id="lead-form_01"
+  >
+    <a
+      class="text-main"
+      id="notify-btn"
+      type="submit"
+      target="_blank"
+      href="https://www.kickstarter.com/projects/miaomada/dp-m2-us-edition-precise-protein-zero-mess?ref=1xvzht"
+      >Get it now</a
+    >
+  </form>
+</div>
+
+<style scoped>
+  .container-form,
+  .container-form form {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+  .cta-form .text-main {
+    text-decoration: none;
+  }
+  /* ========================= */
+  /* 📱 MOBILE */
+  /* ========================= */
+
+  @media (max-width: 768px) {
+    .container-form {
+      width: 100%;
+    }
+
+    /* FORM */
+    .cta-form {
+      margin-left: 0;
+      flex-direction: column;
+      width: 100%;
+    }
+    .cta-form button {
+      width: stretch;
+    }
+    .cta-form .text-main {
+      font-size: 16px !important;
+    }
+  }
+</style>

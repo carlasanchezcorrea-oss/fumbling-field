@@ -59,7 +59,13 @@
   border: none;
   background: #fff;
 }
-
+.error-message-heroBanner,
+.error-message {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 6px;
+  font-family: "RalewayRegular";
+}
 /* BOTONES */
 .heroBanner .buttons {
   display: flex;
@@ -73,18 +79,19 @@
 }
 .heroBanner button.primary,
 .heroBanner button.secondary {
-  /* width: 100%; */
+  width: 100%;
   padding: 14px 20px;
   border-radius: 10px;
   font-size: 14px;
   cursor: pointer;
+  height: 50px;
 }
 
 /* PRIMARY */
 .heroBanner .primary {
   background: black;
   color: white;
-  border: none;
+    border: none;
 }
 
 /* SECONDARY */

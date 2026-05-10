@@ -1,6 +1,6 @@
 /* ========================= */
 /* DEFAULT */
-/* 💻 DESKTOP (1024+) */
+/* 💻 DESKTOP MEDIUM (1024+) */
 /* ========================= */
 /* SECTION */
 .feature {
@@ -32,7 +32,7 @@
   width: 45%;
 }
 
-/* ANIMACIÓN */
+/* ANIMATION */
 .feature .row.show {
   opacity: 1;
   transform: translateY(0);
@@ -84,7 +84,7 @@
 }
 
 /* ========================= */
-/* 💻 DESKTOP GRANDE (1440+) */
+/* 💻 DESKTOP+ (1440+) */
 /* ========================= */
 
 @media (min-width: 1440px) {

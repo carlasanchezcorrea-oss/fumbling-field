@@ -137,7 +137,7 @@ import "./pricing.css";
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      fetch("https://dpm2.miaomada.co.jp/api/get-stripe-count.php")
+      fetch("http://localhost:8000/api/get-stripe-count.php")
         .then((res) => res.json())
         .then((data) => {
           const el = document.getElementById("count-number-register");

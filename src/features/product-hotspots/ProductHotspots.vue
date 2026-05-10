@@ -6,7 +6,7 @@
         <h1 class="title text-h3">Crafted for Everyday Precision.</h1>
         <div class="description text-p">
           <p>
-            DP-M2 blends meticulous Japanese engineering with a minimalist,
+            The DP-M2 U.S. Edition blends meticulous Japanese engineering with a minimalist,
             high-performance design, built to feel as solid as it looks.
             <br />
             This isn't just protein prep. It's a routine upgrade, designed to

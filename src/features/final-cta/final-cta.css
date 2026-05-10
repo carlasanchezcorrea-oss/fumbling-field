@@ -55,7 +55,8 @@
   flex: 1;
 }
 
-.cta-form button {
+.cta-form button,
+.cta-form a {
   min-width: 170px;
   padding: 14px 20px;
   border-radius: 10px;
@@ -63,6 +64,8 @@
   background: #1e88e5;
   color: white;
   cursor: pointer;
+  text-align: center;
+  font-size: 14px;
 }
 .cta-container .cta-form, .container-form {
   width: 90%;

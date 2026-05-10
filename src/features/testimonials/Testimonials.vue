@@ -8,9 +8,9 @@
         :class="{ visible: isVisible.header }"
       >
         <h2 class="main-title text-h3">Validated by real routines.</h2>
-        <p class="subtitle text-p">
+        <!-- <p class="subtitle text-p">
           Already trusted in Japan. <strong>Now coming to the U.S.</strong>
-        </p>
+        </p> -->
       </div>
       <!-- Swiper Carousel -->
       <SwiperCarousel />

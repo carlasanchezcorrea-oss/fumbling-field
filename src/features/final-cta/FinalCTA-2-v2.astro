@@ -1,0 +1,109 @@
+---
+import "./final-cta.css";
+---
+
+<section class="cta container-global" id="cta">
+  <div class="cta-container">
+    <!-- TEXTO -->
+    <div class="cta-text reveal">
+      <h3 class="text-h3">Ready to upgrade your routine?</h3>
+
+      <p class="text-description">
+        The DP-M2 U.S. Edition is live on Kickstarter. Limited units at early
+        bird prices.
+      </p>
+    </div>
+
+    <!-- FORM -->
+    <div class="container-form">
+      <div id="error-message-container-02"></div>
+      <form
+        class="cta-form reveal delay"
+        data-form="banner_02_form"
+        id="lead-form_02"
+      >
+        <a
+          class="text-main"
+          target="_blank"
+          href="https://www.kickstarter.com/projects/miaomada/dp-m2-us-edition-precise-protein-zero-mess?ref=1xvzht"
+          >Get it on Kickstarter</a
+        >
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="./final-cta-reveal.js"></script>
+
+<style scoped>
+  .container-form,
+  .container-form form {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+  .cta {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("/assets/cta/bg-cta-2.png");
+
+    background-size: 115%;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+  .cta-form .text-main {
+    text-decoration: none;
+  }
+  /* ========================= */
+  /* 📱 MOBILE */
+  /* ========================= */
+
+  @media (max-width: 768px) {
+    .cta {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("/assets/cta/bg-cta-2.png");
+
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .container-form {
+      width: 100%;
+    }
+    .cta-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cta-container .cta-text {
+      width: 100%;
+    }
+
+    .cta-container .cta-text,
+    .cta-text h3 {
+      font-size: 36px;
+    }
+    .cta-text p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    /* FORM */
+    .cta-form,
+    .container-form {
+      margin-left: 0;
+      flex-direction: column;
+      justify-content: end;
+      width: 100%;
+    }
+
+    .cta-form input,
+    .cta-form button {
+      width: stretch;
+    }
+    .cta-form .text-main {
+      font-size: 16px !important;
+    }
+  }
+</style>

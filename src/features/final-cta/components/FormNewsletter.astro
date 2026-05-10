@@ -1,0 +1,49 @@
+    <!-- FORM -->
+    <div class="container-form">
+      <div id="error-message-container"></div>
+      <form
+        class="cta-form reveal delay"
+        data-form="banner_01_form"
+        id="lead-form_01"
+      >
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          class="text-description"
+          required
+        />
+        <button class="text-main" id="notify-btn" type="submit"
+          >Notify me</button
+        >
+      </form>
+    </div>
+
+<script src="./final-cta-form.js"></script>
+
+<style scoped>
+  /* ========================= */
+  /* 📱 MOBILE */
+  /* ========================= */
+
+  @media (max-width: 768px) {
+    .container-form {
+      width: 100%;
+    }
+
+    /* FORM */
+    .cta-form {
+      margin-left: 0;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-form input,
+    .cta-form button {
+      width: stretch;
+    }
+    .cta-form .text-main {
+      font-size: 16px !important;
+    }
+  }
+</style>
